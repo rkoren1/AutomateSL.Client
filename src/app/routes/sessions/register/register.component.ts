@@ -35,4 +35,9 @@ export class RegisterComponent {
       }
     };
   }
+  registerButtonClick() {
+    if (this.registerForm.status === 'VALID') {
+      console.log('You registered successfuly!');
+    }
+  }
 }
