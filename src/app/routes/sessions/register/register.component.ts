@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { RegisterService } from './register.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent {
     }
   );
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private registerService: RegisterService) {}
 
   matchValidator(source: string, target: string) {
     return (control: AbstractControl) => {
@@ -38,6 +39,10 @@ export class RegisterComponent {
   registerButtonClick() {
     if (this.registerForm.status === 'VALID') {
       console.log('You registered successfuly!');
+      console.log(this.registerForm.value);
+      this.registerService
+        .createUser(this.registerForm.value.username, this.registerForm.value.password)
+        .then(res => console.log(res));
     }
   }
 }
