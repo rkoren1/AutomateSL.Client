@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { RegisterService } from './register.service';
+import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import * as bcrypt from 'bcryptjs';
+import { RegisterService } from './register.service';
 
 @Component({
   selector: 'app-register',
@@ -41,7 +41,7 @@ export class RegisterComponent {
     if (this.registerForm.status === 'VALID') {
       bcrypt.hash(<string>this.registerForm.value.password, 10, (err, hash) => {
         this.registerService
-          .createUser(this.registerForm.value.username, this.registerForm.value.password)
+          .createUser(<string>this.registerForm.value.username, hash)
           .then(res => console.log(res));
       });
     }
