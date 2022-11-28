@@ -8,6 +8,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class RegisterService {
   constructor(private http: HttpClient) {}
+
   createUser(email: string, password: string) {
     const createUser$ = this.http.post<any>(environment.apiUrl + '/user/createuser', {
       email,

@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
-import { filter } from 'rxjs/operators';
 import { AuthService } from '@core/authentication';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,12 @@ export class LoginComponent {
     rememberMe: [false],
   });
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    private loginService: LoginService
+  ) {}
 
   get username() {
     return this.loginForm.get('username')!;
@@ -34,8 +38,11 @@ export class LoginComponent {
 
   login() {
     this.isSubmitting = true;
+    this.loginService.authenticate(this.username.value, this.password.value).then(res => {
+      console.log(res);
+    });
 
-    this.auth
+    /* this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)
       .pipe(filter(authenticated => authenticated))
       .subscribe(
@@ -52,6 +59,6 @@ export class LoginComponent {
           }
           this.isSubmitting = false;
         }
-      );
+      ); */
   }
 }
