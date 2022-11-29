@@ -5,6 +5,7 @@ import { TokenService } from './token.service';
 import { LoginService } from './login.service';
 import { filterObject, isEmptyObject } from './helpers';
 import { User } from './interface';
+import { Token } from './interface';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +34,15 @@ export class AuthService {
     return this.tokenService.valid();
   }
 
-  login(username: string, password: string, rememberMe = false) {
-    return this.loginService.login(username, password, rememberMe).pipe(
-      tap(token => this.tokenService.set(token)),
+  login(email: string, password: string) {
+    return this.loginService.login(email, password).pipe(
+      tap(res => {
+        const token: Token = {
+          access_token: res.acessToken,
+          refresh_token: this.getCookie('jwt'),
+        };
+        this.tokenService.set(token);
+      }),
       map(() => this.check())
     );
   }
@@ -75,5 +82,20 @@ export class AuthService {
     }
 
     return this.loginService.me().pipe(tap(user => this.user$.next(user)));
+  }
+
+  private getCookie(name: string) {
+    const ca: Array<string> = document.cookie.split(';');
+    const caLen: number = ca.length;
+    const cookieName = `${name}=`;
+    let c: string;
+
+    for (let i = 0; i < caLen; i += 1) {
+      c = ca[i].replace(/^\s+/g, '');
+      if (c.indexOf(cookieName) == 0) {
+        return c.substring(cookieName.length, c.length);
+      }
+    }
+    return '';
   }
 }

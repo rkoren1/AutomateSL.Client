@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Token, User } from './interface';
 import { Menu } from '@core';
 import { map } from 'rxjs/operators';
+import { ILoginModel } from 'app/routes/sessions/login/login.model';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,12 @@ import { map } from 'rxjs/operators';
 export class LoginService {
   constructor(protected http: HttpClient) {}
 
-  login(username: string, password: string, rememberMe = false) {
-    return this.http.post<Token>('/auth/login', { username, password, rememberMe });
+  login(email: string, password: string) {
+    const params = new HttpParams().append('email', email).append('password', password);
+    return this.http.get<ILoginModel>(environment.apiUrl + '/user/authenticate', {
+      params,
+      withCredentials: true,
+    });
   }
 
   refresh(params: Record<string, any>) {
