@@ -38,16 +38,18 @@ export class LoginComponent {
 
   login() {
     this.isSubmitting = true;
-    this.loginService.authenticate(this.username.value, this.password.value).subscribe(res => {
-      console.log(res);
-      if (res.authenticated === true) {
-        this.router.navigateByUrl('/');
-        this.isSubmitting = false;
-      }
-    },
-      error => {
+    this.loginService.authenticate(this.username.value, this.password.value).subscribe({
+      next: res => {
+        console.log(res);
+        if (res.authenticated === true) {
+          this.router.navigateByUrl('/');
+          this.isSubmitting = false;
+        }
+      },
+      error: error => {
         console.log(error);
         this.isSubmitting = false;
+      },
     });
 
     /*  this.auth
