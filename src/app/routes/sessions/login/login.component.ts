@@ -40,9 +40,13 @@ export class LoginComponent {
     this.isSubmitting = true;
     this.loginService.authenticate(this.username.value, this.password.value).then(res => {
       console.log(res);
+      if (res.authenticated === true) {
+        this.router.navigateByUrl('/');
+        this.isSubmitting = false;
+      }
     });
 
-    /* this.auth
+    /*  this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)
       .pipe(filter(authenticated => authenticated))
       .subscribe(
