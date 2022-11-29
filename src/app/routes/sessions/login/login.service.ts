@@ -13,6 +13,7 @@ export class LoginService {
     const params = new HttpParams().append('email', email).append('password', password);
     const authenticate$ = this.http.get<any>(environment.apiUrl + '/user/authenticate', {
       params,
+      withCredentials: true,
     });
     return lastValueFrom(authenticate$)
       .then((data: any) => data)
