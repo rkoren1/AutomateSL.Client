@@ -12,7 +12,7 @@ export class LoginService {
 
   authenticate(email: string, password: string) {
     const params = new HttpParams().append('email', email).append('password', password);
-    return this.http.get<ILoginModel>(environment.apiUrl + '/user/authenticate', {
+    return this.http.post<ILoginModel>(environment.apiUrl + '/user/authenticate', null, {
       params,
       withCredentials: true,
     });
