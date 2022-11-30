@@ -16,14 +16,14 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private auth: AuthService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return true; // this.authenticate();
+    return this.authenticate();
   }
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean | UrlTree {
-    return true; // this.authenticate();
+    return this.authenticate();
   }
 
   private authenticate(): boolean | UrlTree {

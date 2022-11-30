@@ -42,6 +42,7 @@ export class LoginComponent {
       next: res => {
         console.log(res);
         if (res.authenticated === true) {
+          this.loginService.setAccessToken(res.acessToken);
           this.router.navigateByUrl('/');
           this.isSubmitting = false;
         }
