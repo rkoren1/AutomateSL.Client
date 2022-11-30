@@ -42,7 +42,9 @@ export class RegisterComponent {
       bcrypt.hash(<string>this.registerForm.value.password, 10, (err, hash) => {
         this.registerService
           .createUser(<string>this.registerForm.value.username, hash)
-          .then(res => console.log(res));
+          .subscribe(res => {
+            console.log(res);
+          });
       });
     }
   }
