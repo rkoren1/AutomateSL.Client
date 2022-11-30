@@ -4,7 +4,6 @@ import { Menu } from '@core';
 import { environment } from '@env/environment';
 import { ILoginModel } from 'app/routes/sessions/login/login.model';
 import { map } from 'rxjs/operators';
-import { IRefreshTokenModel } from './authentication.model';
 import { Token, User } from './interface';
 
 @Injectable({
@@ -22,11 +21,12 @@ export class LoginService {
   }
 
   refresh(params: Record<string, any>) {
+    //return this.http.get<IRefreshTokenModel>(environment.apiUrl + '/refreshtoken');
     return this.http.post<Token>('/auth/refresh', params);
   }
 
   logout() {
-    return this.http.get<IRefreshTokenModel>(environment.apiUrl + '/refreshtoken', {});
+    return this.http.get<any>(environment.apiUrl + '/logout', { withCredentials: true });
   }
 
   me() {
