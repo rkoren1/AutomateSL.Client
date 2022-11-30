@@ -27,7 +27,7 @@ export class LoginService {
     this.http
       .get<Token>(environment.apiUrl + '/refreshtoken', { withCredentials: true })
       .subscribe(res => {
-        this.access_token = res.access_token;
+        this.access_token = res?.access_token;
       });
   }
 
