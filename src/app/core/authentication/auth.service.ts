@@ -38,7 +38,7 @@ export class AuthService {
     return this.loginService.login(email, password).pipe(
       tap(res => {
         const token: Token = {
-          access_token: res.acessToken,
+          access_token: res.access_token,
           refresh_token: this.getCookie('jwt'),
         };
         this.tokenService.set(token);

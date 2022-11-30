@@ -1,4 +1,4 @@
 export interface ILoginModel {
   authenticated: boolean;
-  acessToken: string;
+  access_token: string;
 }

@@ -40,10 +40,9 @@ export class LoginComponent {
     this.isSubmitting = true;
     this.loginService.authenticate(this.username.value, this.password.value).subscribe({
       next: res => {
-        console.log(res);
         if (res.authenticated === true) {
-          this.loginService.setAccessToken(res.acessToken);
-          this.router.navigateByUrl('/');
+          this.loginService.setAccessToken(res.access_token);
+          this.router.navigateByUrl('/dashboard');
           this.isSubmitting = false;
         }
       },
