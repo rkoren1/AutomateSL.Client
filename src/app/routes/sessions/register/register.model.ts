@@ -1,4 +1,4 @@
 export interface IRegister {
-  successful: boolean;
+  success: boolean;
   data: string;
 }

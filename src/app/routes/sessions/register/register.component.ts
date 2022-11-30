@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
 import { RegisterService } from './register.service';
 
@@ -19,7 +20,11 @@ export class RegisterComponent {
     }
   );
 
-  constructor(private fb: FormBuilder, private registerService: RegisterService) {}
+  constructor(
+    private fb: FormBuilder,
+    private registerService: RegisterService,
+    private router: Router
+  ) {}
 
   matchValidator(source: string, target: string) {
     return (control: AbstractControl) => {
@@ -44,6 +49,10 @@ export class RegisterComponent {
           .createUser(<string>this.registerForm.value.username, hash)
           .subscribe(res => {
             console.log(res);
+            //after succesful navigation show success popup and then redirect to login
+            if (res.success === true) {
+              this.router.navigateByUrl('/auth/login');
+            }
           });
       });
     }
