@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Token, User } from './interface';
+import { Injectable } from '@angular/core';
 import { Menu } from '@core';
-import { map } from 'rxjs/operators';
-import { ILoginModel } from 'app/routes/sessions/login/login.model';
 import { environment } from '@env/environment';
+import { ILoginModel } from 'app/routes/sessions/login/login.model';
+import { map } from 'rxjs/operators';
+import { IRefreshTokenModel } from './authentication.model';
+import { Token, User } from './interface';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +26,7 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.post<any>('/auth/logout', {});
+    return this.http.get<IRefreshTokenModel>(environment.apiUrl + '/refreshtoken', {});
   }
 
   me() {
