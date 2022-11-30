@@ -12,7 +12,7 @@ import { TokenFactory } from './token-factory.service';
   providedIn: 'root',
 })
 export class TokenService implements OnDestroy {
-  private key = 'ng-matero-token';
+  private key = 'lifebots-token';
 
   private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
   private refresh$ = new Subject<BaseToken | undefined>();
