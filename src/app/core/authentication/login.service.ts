@@ -51,12 +51,4 @@ export class LoginService {
   logout() {
     return this.http.get<any>(environment.apiUrl + '/logout', { withCredentials: true });
   }
-
-  me() {
-    return this.http.get<User>('/me');
-  }
-
-  menu() {
-    return this.http.get<{ menu: Menu[] }>('/me/menu').pipe(map(res => res.menu));
-  }
 }

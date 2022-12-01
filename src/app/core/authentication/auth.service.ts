@@ -15,10 +15,7 @@ export class AuthService {
   private change$ = merge(
     this.tokenService.change(),
     this.tokenService.refresh().pipe(switchMap(() => this.refresh()))
-  ).pipe(
-    switchMap(() => this.assignUser()),
-    share()
-  );
+  ).pipe(share());
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
@@ -68,10 +65,6 @@ export class AuthService {
     return this.user$.pipe(share());
   }
 
-  menu() {
-    return iif(() => this.check(), this.loginService.menu(), of([]));
-  }
-
   private assignUser() {
     if (!this.check()) {
       return of({}).pipe(tap(user => this.user$.next(user)));
@@ -81,7 +74,7 @@ export class AuthService {
       return of(this.user$.getValue());
     }
 
-    return this.loginService.me().pipe(tap(user => this.user$.next(user)));
+    return null;
   }
 
   private getCookie(name: string) {
