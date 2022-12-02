@@ -5,7 +5,6 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './auth-layout/auth-layout.component';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { UserPanelComponent } from './sidebar/user-panel.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { NavAccordionDirective } from './sidemenu/nav-accordion.directive';
 import { NavAccordionItemDirective } from './sidemenu/nav-accordion-item.directive';
@@ -21,6 +20,7 @@ import { BrandingComponent } from './widgets/branding.component';
 import { NotificationComponent } from './widgets/notification.component';
 import { TranslateComponent } from './widgets/translate.component';
 import { UserComponent } from './widgets/user.component';
+import { UserPanelComponent } from './sidebar/user-panel/user-panel.component';
 
 @NgModule({
   declarations: [
