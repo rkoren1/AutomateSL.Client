@@ -53,24 +53,5 @@ export class LoginComponent {
           this.isSubmitting = false;
         },
       });
-
-    /*  this.auth
-      .login(this.username.value, this.password.value, this.rememberMe.value)
-      .pipe(filter(authenticated => authenticated))
-      .subscribe(
-        () => this.router.navigateByUrl('/'),
-        (errorRes: HttpErrorResponse) => {
-          if (errorRes.status === 422) {
-            const form = this.loginForm;
-            const errors = errorRes.error.errors;
-            Object.keys(errors).forEach(key => {
-              form.get(key === 'email' ? 'username' : key)?.setErrors({
-                remote: errors[key][0],
-              });
-            });
-          }
-          this.isSubmitting = false;
-        }
-      ); */
   }
 }
