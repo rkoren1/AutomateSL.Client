@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Token } from '@core';
 import { environment } from '@env/environment';
-import { ILoginModel } from './login.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,20 +36,5 @@ export class LoginService {
       this.refresh();
     }
     return this.access_token;
-  }
-
-  private getCookie(name: string) {
-    const ca: Array<string> = document.cookie.split(';');
-    const caLen: number = ca.length;
-    const cookieName = `${name}=`;
-    let c: string;
-
-    for (let i = 0; i < caLen; i += 1) {
-      c = ca[i].replace(/^\s+/g, '');
-      if (c.indexOf(cookieName) == 0) {
-        return c.substring(cookieName.length, c.length);
-      }
-    }
-    return '';
   }
 }

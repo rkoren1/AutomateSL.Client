@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, iif, merge, of } from 'rxjs';
+import { BehaviorSubject, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
-import { TokenService } from './token.service';
-import { LoginService } from './login.service';
 import { filterObject, isEmptyObject } from './helpers';
-import { User } from './interface';
-import { Token } from './interface';
+import { Token, User } from './interface';
+import { LoginService } from './login.service';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -36,7 +35,6 @@ export class AuthService {
       tap(res => {
         const token: Token = {
           access_token: res.access_token,
-          refresh_token: this.getCookie('jwt'),
         };
         this.tokenService.set(token);
       }),
@@ -75,20 +73,5 @@ export class AuthService {
     }
 
     return null;
-  }
-
-  private getCookie(name: string) {
-    const ca: Array<string> = document.cookie.split(';');
-    const caLen: number = ca.length;
-    const cookieName = `${name}=`;
-    let c: string;
-
-    for (let i = 0; i < caLen; i += 1) {
-      c = ca[i].replace(/^\s+/g, '');
-      if (c.indexOf(cookieName) == 0) {
-        return c.substring(cookieName.length, c.length);
-      }
-    }
-    return '';
   }
 }
