@@ -38,19 +38,21 @@ export class LoginComponent {
 
   login() {
     this.isSubmitting = true;
-    this.loginService.authenticate(this.username.value, this.password.value).subscribe({
-      next: res => {
-        if (res.authenticated === true) {
-          this.loginService.setAccessToken(res.access_token);
-          this.router.navigateByUrl('/dashboard');
+    this.loginService
+      .authenticate(this.username.value, this.password.value, this.rememberMe.value)
+      .subscribe({
+        next: res => {
+          if (res.authenticated === true) {
+            this.loginService.setAccessToken(res.access_token);
+            this.router.navigateByUrl('/dashboard');
+            this.isSubmitting = false;
+          }
+        },
+        error: error => {
+          console.log(error);
           this.isSubmitting = false;
-        }
-      },
-      error: error => {
-        console.log(error);
-        this.isSubmitting = false;
-      },
-    });
+        },
+      });
 
     /*  this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)

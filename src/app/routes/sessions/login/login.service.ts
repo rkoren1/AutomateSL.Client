@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Token } from '@core';
 import { environment } from '@env/environment';
@@ -11,12 +11,14 @@ export class LoginService {
   executeOnce = true;
   constructor(private http: HttpClient) {}
 
-  authenticate(email: string, password: string) {
-    const params = new HttpParams().append('email', email).append('password', password);
-    return this.http.post<Token>(environment.apiUrl + '/user/authenticate', null, {
-      params,
-      withCredentials: true,
-    });
+  authenticate(email: string, password: string, rememberMe: boolean) {
+    return this.http.post<Token>(
+      environment.apiUrl + '/user/authenticate',
+      { email, password, rememberMe },
+      {
+        withCredentials: true,
+      }
+    );
   }
 
   setAccessToken(token: string) {
