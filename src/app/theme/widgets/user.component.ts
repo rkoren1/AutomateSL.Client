@@ -11,7 +11,7 @@ import { AuthService, User } from '@core/authentication';
       mat-button
       [matMenuTriggerFor]="menu"
     >
-      <img class="matero-avatar" [src]="user.avatar" width="32" alt="avatar" />
+      <img class="matero-avatar" src="assets/images/account-avatar.png" width="32" alt="avatar" />
       <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
     </button>
 
