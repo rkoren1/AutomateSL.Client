@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as bcrypt from 'bcryptjs';
+import { ToastrService } from 'ngx-toastr';
 import { RegisterService } from './register.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class RegisterComponent {
   constructor(
     private fb: FormBuilder,
     private registerService: RegisterService,
-    private router: Router
+    private router: Router,
+    private toast: ToastrService
   ) {}
 
   matchValidator(source: string, target: string) {
@@ -51,6 +53,7 @@ export class RegisterComponent {
             console.log(res);
             //after succesful navigation show success popup and then redirect to login
             if (res.success === true) {
+              this.toast.success(res.message);
               this.router.navigateByUrl('/auth/login');
             }
           });
