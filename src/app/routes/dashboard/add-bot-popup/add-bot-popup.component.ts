@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./add-bot-popup.component.scss'],
 })
 export class AddBotPopupComponent implements OnInit {
+  botNameValue = '';
   constructor() {}
-
   ngOnInit() {}
 }

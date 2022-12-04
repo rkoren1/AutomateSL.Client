@@ -15,5 +15,9 @@ export class DashboardComponent implements OnInit {
 
   addBot() {
     const dialogRef = this.dialog.open(AddBotPopupComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 }
