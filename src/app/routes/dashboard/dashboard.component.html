@@ -1,35 +1,8 @@
 <breadcrumb></breadcrumb>
 <div class="page">
   <div class="bots-layout">
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
-    </div>
-    <div class="bot-wrapper">
-      <mat-card class="bot">tetst</mat-card>
+    <div class="bot-wrapper" *ngFor="let bot of allBots">
+      <mat-card class="bot">{{ bot.name }}</mat-card>
     </div>
   </div>
   <mat-card class="fa-solid fa-plus plus-card" (click)="addBot()"
