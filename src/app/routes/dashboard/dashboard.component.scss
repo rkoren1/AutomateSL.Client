@@ -5,7 +5,8 @@
   flex-wrap: wrap;
 }
 .bot {
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
 .bot-wrapper {
@@ -33,4 +34,20 @@
   font-size: 46px;
   display: flex;
   justify-content: center;
+}
+
+.gear-icon {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  cursor: pointer;
+}
+
+.bot-name {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.start-icon {
+  text-align: center;
 }
