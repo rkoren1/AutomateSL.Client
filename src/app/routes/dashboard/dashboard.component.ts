@@ -41,9 +41,14 @@ export class DashboardComponent implements OnInit {
     });
   }
   linkAccToBot(botId: number) {
-    const dialogRef = this.dialog.open(LinkAccToBotPopupComponent, { data: botId });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    this.dashboardService.getBotConfiguration(botId).subscribe(res => {
+      const dialogRef = this.dialog.open(LinkAccToBotPopupComponent, {
+        data: { botId, botConfiguration: res },
+      });
     });
+
+    /* dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    }); */
   }
 }

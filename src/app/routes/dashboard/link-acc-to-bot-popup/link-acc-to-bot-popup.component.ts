@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LinkAccData } from '@shared/Models/bot.model';
-import { LinkAccForm } from '@shared/Models/forms.model';
 import { LinkAccToBotPopupService } from './link-acc-to-bot-popup.service';
 
 @Component({
@@ -11,30 +10,29 @@ import { LinkAccToBotPopupService } from './link-acc-to-bot-popup.service';
   styleUrls: ['./link-acc-to-bot-popup.component.scss'],
 })
 export class LinkAccToBotPopupComponent implements OnInit {
-  linkAccForm: FormGroup<LinkAccForm>;
+  linkAccForm: FormGroup; //<LinkAccForm> why it doesnt work???
   constructor(
     private dialogRef: MatDialogRef<LinkAccToBotPopupComponent>,
     private linkAccToBotPopupService: LinkAccToBotPopupService,
-    @Inject(MAT_DIALOG_DATA) private botId: number
+    @Inject(MAT_DIALOG_DATA) private data: { botId: number; botConfiguration: LinkAccData }
   ) {}
 
   ngOnInit() {
-    this.linkAccForm = new FormGroup<LinkAccForm>({
-      loginFirstName: new FormControl(),
-      loginLastName: new FormControl(),
-      loginPassword: new FormControl(),
-      loginStartLocation: new FormControl(),
+    this.linkAccForm = new FormGroup({
+      loginFirstName: new FormControl(this.data.botConfiguration.loginFirstName),
+      loginLastName: new FormControl(this.data.botConfiguration.loginLastName),
+      loginPassword: new FormControl(this.data.botConfiguration.loginPassword),
+      loginStartLocation: new FormControl(this.data.botConfiguration.loginStartLocation),
     });
   }
   validateForm() {
     this.linkAccForm.markAllAsTouched();
     if (this.linkAccForm.valid) {
       this.linkAccToBotPopupService
-        .linkAcctoBot(this.botId, <LinkAccData>this.linkAccForm.value)
+        .linkAcctoBot(this.data.botId, <LinkAccData>this.linkAccForm.value)
         .subscribe(res => {
-          console.log(res);
+          this.dialogRef.close();
         });
-      this.dialogRef.close({ test: 'data' });
     }
   }
 }
