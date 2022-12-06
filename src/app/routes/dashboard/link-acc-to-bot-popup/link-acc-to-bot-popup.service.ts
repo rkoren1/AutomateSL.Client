@@ -11,7 +11,7 @@ export class LinkAccToBotPopupService {
 
   linkAcctoBot(botId: number, data: LinkAccData) {
     const params = new HttpParams().append('botId', botId);
-    this.http.put(environment.apiUrl + '/bot/linkacctobot', {
+    return this.http.put(environment.apiUrl + '/bot/linkacctobot', {
       loginFirstName: data.loginFirstName,
       loginLastName: data.loginLastName,
       loginPassword: data.loginPassword,

@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit {
         });
     });
   }
-  linkAccToBot() {
-    const dialogRef = this.dialog.open(LinkAccToBotPopupComponent);
+  linkAccToBot(botId: number) {
+    const dialogRef = this.dialog.open(LinkAccToBotPopupComponent, { data: botId });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
