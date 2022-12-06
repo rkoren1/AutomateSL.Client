@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { LinkAccForm } from '@shared/Models/forms.model';
+import { LinkAccToBotPopupService } from './link-acc-to-bot-popup.service';
 
 @Component({
   selector: 'app-link-acc-to-bot-popup',
@@ -9,7 +11,10 @@ import { LinkAccForm } from '@shared/Models/forms.model';
 })
 export class LinkAccToBotPopupComponent implements OnInit {
   linkAccForm: FormGroup<LinkAccForm>;
-  constructor() {}
+  constructor(
+    private dialogRef: MatDialogRef<LinkAccToBotPopupComponent>,
+    private linkAccToBotPopupService: LinkAccToBotPopupService
+  ) {}
 
   ngOnInit() {
     this.linkAccForm = new FormGroup<LinkAccForm>({
@@ -18,5 +23,11 @@ export class LinkAccToBotPopupComponent implements OnInit {
       loginPassword: new FormControl(),
       loginStartLocation: new FormControl(),
     });
+  }
+  validateForm() {
+    this.linkAccForm.markAllAsTouched();
+    if (this.linkAccForm.valid) {
+      this.dialogRef.close({ test: 'data' });
+    }
   }
 }
