@@ -3,7 +3,7 @@
   <div class="bots-layout">
     <div class="bot-wrapper" *ngFor="let bot of allBots">
       <mat-card class="bot">
-        <div class="fa-solid fa-gear gear-icon"></div>
+        <div class="fa-solid fa-gear gear-icon" (click)="linkAccToBot()"></div>
         <div class="bot-name">{{ bot.name }}</div>
         <div class="fa-solid fa-play start-icon"></div>
       </mat-card>

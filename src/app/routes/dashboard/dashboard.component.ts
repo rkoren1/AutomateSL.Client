@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Bots } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
+import { LinkAccToBotPopupComponent } from './link-acc-to-bot-popup/link-acc-to-bot-popup.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,6 +38,12 @@ export class DashboardComponent implements OnInit {
         this.dashboardService.addBot(result).subscribe(res => {
           this.getAllBots();
         });
+    });
+  }
+  linkAccToBot() {
+    const dialogRef = this.dialog.open(LinkAccToBotPopupComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
     });
   }
 }
