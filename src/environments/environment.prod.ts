@@ -2,5 +2,5 @@ export const environment = {
   production: true,
   baseUrl: '',
   useHash: false,
-  apiUrl: 'http://localhost:3000/api',
+  apiUrl: 'https://zen-bell.209-239-116-141.plesk.page/api',
 };
