@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
 
   getAllBots() {
     this.dashboardService.getBots().subscribe(res => {
-      console.log(res);
       this.allBots = res;
       this.cd.detectChanges();
     });

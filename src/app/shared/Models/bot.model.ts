@@ -7,7 +7,7 @@ export interface Bots {
 export interface ILinkAccData {
   loginFirstName: string;
   loginPassword: string;
-  loginStartLocation: string;
+  loginSpawnLocation: string;
 }
 
 export interface IRemoveBot {
