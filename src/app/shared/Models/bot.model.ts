@@ -6,7 +6,6 @@ export interface Bots {
 
 export interface ILinkAccData {
   loginFirstName: string;
-  loginLastName: string;
   loginPassword: string;
   loginStartLocation: string;
 }
