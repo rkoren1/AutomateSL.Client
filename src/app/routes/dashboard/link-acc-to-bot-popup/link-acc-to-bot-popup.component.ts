@@ -12,6 +12,7 @@ import { LinkAccToBotPopupService } from './link-acc-to-bot-popup.service';
 })
 export class LinkAccToBotPopupComponent implements OnInit {
   linkAccForm: FormGroup<LinkAccForm>;
+  selectedSpawnLocation: string;
   constructor(
     private dialogRef: MatDialogRef<LinkAccToBotPopupComponent>,
     private linkAccToBotPopupService: LinkAccToBotPopupService,
@@ -29,9 +30,11 @@ export class LinkAccToBotPopupComponent implements OnInit {
       loginPassword: new FormControl(this.data.botConfiguration.loginPassword, {
         nonNullable: true,
       }),
-      loginStartLocation: new FormControl(this.data.botConfiguration.loginStartLocation, {
-        nonNullable: true,
-      }),
+      loginSpawnLocation: new FormControl(),
+      regionName: new FormControl(),
+      x: new FormControl(),
+      y: new FormControl(),
+      z: new FormControl(),
     });
   }
 
