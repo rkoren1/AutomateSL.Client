@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
 
   getAllBots() {
     this.dashboardService.getBots().subscribe(res => {
+      console.log(res);
       this.allBots = res;
       this.cd.detectChanges();
     });
@@ -53,7 +54,18 @@ export class DashboardComponent implements OnInit {
   }
   removeBot(botId: number) {
     this.dashboardService.removeBot(botId).subscribe(res => {
-      this.getAllBots();
+      if (res.success === true) this.getAllBots();
     });
+  }
+  startStopBot(botId: number, running: boolean) {
+    if (running) {
+      this.dashboardService.stopBot(botId).subscribe(res => {
+        if (res.success === true) this.getAllBots();
+      });
+    } else {
+      this.dashboardService.startBot(botId).subscribe(res => {
+        if (res.success === true) this.getAllBots();
+      });
+    }
   }
 }

@@ -1,6 +1,7 @@
 export interface Bots {
   id: number;
   name: string;
+  running: boolean;
 }
 
 export interface ILinkAccData {
@@ -11,5 +12,13 @@ export interface ILinkAccData {
 }
 
 export interface IRemoveBot {
+  success: boolean;
+}
+
+export interface IStartBot {
+  success: boolean;
+}
+
+export interface IStopBot {
   success: boolean;
 }
