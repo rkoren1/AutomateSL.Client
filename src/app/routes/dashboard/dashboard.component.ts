@@ -51,4 +51,9 @@ export class DashboardComponent implements OnInit {
       console.log(result);
     }); */
   }
+  removeBot(botId: number) {
+    this.dashboardService.removeBot(botId).subscribe(res => {
+      this.getAllBots();
+    });
+  }
 }

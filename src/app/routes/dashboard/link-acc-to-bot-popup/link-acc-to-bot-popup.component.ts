@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LinkAccData } from '@shared/Models/bot.model';
+import { ILinkAccData } from '@shared/Models/bot.model';
 import { LinkAccForm } from '@shared/Models/forms.model';
 import { LinkAccToBotPopupService } from './link-acc-to-bot-popup.service';
 
@@ -15,7 +15,7 @@ export class LinkAccToBotPopupComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<LinkAccToBotPopupComponent>,
     private linkAccToBotPopupService: LinkAccToBotPopupService,
-    @Inject(MAT_DIALOG_DATA) private data: { botId: number; botConfiguration: LinkAccData }
+    @Inject(MAT_DIALOG_DATA) private data: { botId: number; botConfiguration: ILinkAccData }
   ) {}
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class LinkAccToBotPopupComponent implements OnInit {
     this.linkAccForm.markAllAsTouched();
     if (this.linkAccForm.valid) {
       this.linkAccToBotPopupService
-        .linkAcctoBot(this.data.botId, <LinkAccData>this.linkAccForm.value)
+        .linkAcctoBot(this.data.botId, <ILinkAccData>this.linkAccForm.value)
         .subscribe(res => {
           this.dialogRef.close();
         });

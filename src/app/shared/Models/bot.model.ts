@@ -3,9 +3,13 @@ export interface Bots {
   name: string;
 }
 
-export interface LinkAccData {
+export interface ILinkAccData {
   loginFirstName: string;
   loginLastName: string;
   loginPassword: string;
   loginStartLocation: string;
+}
+
+export interface IRemoveBot {
+  success: boolean;
 }
