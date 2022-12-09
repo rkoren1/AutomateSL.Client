@@ -65,10 +65,6 @@ export class TokenService implements OnDestroy {
     return this.token?.getBearerToken() ?? '';
   }
 
-  getRefreshToken(): string | void {
-    return this.token?.refresh_token;
-  }
-
   ngOnDestroy(): void {}
 
   private save(token?: Token): void {
