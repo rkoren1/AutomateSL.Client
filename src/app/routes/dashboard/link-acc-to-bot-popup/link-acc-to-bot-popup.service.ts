@@ -17,6 +17,10 @@ export class LinkAccToBotPopupService {
         loginFirstName: data.loginFirstName,
         loginPassword: data.loginPassword,
         loginSpawnLocation: data.loginSpawnLocation,
+        loginRegion: data.loginRegion,
+        loginRegionX: data.loginRegionX,
+        loginRegionY: data.loginRegionY,
+        loginRegionZ: data.loginRegionZ,
       },
       { params }
     );

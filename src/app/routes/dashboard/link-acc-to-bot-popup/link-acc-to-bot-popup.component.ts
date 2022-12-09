@@ -20,6 +20,7 @@ export class LinkAccToBotPopupComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.selectedSpawnLocation = this.data.botConfiguration.loginSpawnLocation;
     this.initForm();
   }
   private initForm() {
@@ -33,10 +34,18 @@ export class LinkAccToBotPopupComponent implements OnInit {
       loginSpawnLocation: new FormControl(this.data.botConfiguration.loginSpawnLocation, {
         nonNullable: true,
       }),
-      regionName: new FormControl(),
-      x: new FormControl(),
-      y: new FormControl(),
-      z: new FormControl(),
+      loginRegion: new FormControl(this.data.botConfiguration.loginRegion, {
+        nonNullable: true,
+      }),
+      loginRegionX: new FormControl(this.data.botConfiguration.loginRegionX, {
+        nonNullable: true,
+      }),
+      loginRegionY: new FormControl(this.data.botConfiguration.loginRegionY, {
+        nonNullable: true,
+      }),
+      loginRegionZ: new FormControl(this.data.botConfiguration.loginRegionZ, {
+        nonNullable: true,
+      }),
     });
   }
 
