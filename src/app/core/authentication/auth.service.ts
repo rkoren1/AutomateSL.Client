@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { LoginService } from 'app/routes/sessions/login/login.service';
 import { BehaviorSubject, merge, of } from 'rxjs';
 import { map, share, tap } from 'rxjs/operators';
 import { isEmptyObject } from './helpers';
 import { User } from './interface';
-import { LoginService } from './login.service';
+
 import { TokenService } from './token.service';
 
 @Injectable({

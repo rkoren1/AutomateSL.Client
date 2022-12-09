@@ -39,4 +39,8 @@ export class LoginService {
     }
     return this.access_token;
   }
+
+  logout() {
+    return this.http.get<any>(environment.apiUrl + '/logout', { withCredentials: true });
+  }
 }
