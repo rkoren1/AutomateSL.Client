@@ -46,6 +46,7 @@ export class LoginComponent {
             this.loginService.setAccessToken(res.access_token);
             this.router.navigateByUrl('/dashboard');
             this.isSubmitting = false;
+            this.auth.assignNewUser(res.email);
           }
         },
         error: error => {

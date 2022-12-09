@@ -17,4 +17,5 @@ export interface Token {
   expires_in?: number;
   exp?: number;
   refresh_token?: string;
+  email?: string;
 }

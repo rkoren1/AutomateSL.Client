@@ -63,6 +63,9 @@ export class AuthService {
     return this.user$.pipe(share());
   }
 
+  assignNewUser(name?: string) {
+    this.user$.next({ name });
+  }
   private assignUser() {
     if (!this.check()) {
       return of({}).pipe(tap(user => this.user$.next(user)));
