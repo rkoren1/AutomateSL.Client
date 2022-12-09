@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, merge, of } from 'rxjs';
-import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
-import { filterObject, isEmptyObject } from './helpers';
+import { map, share, tap } from 'rxjs/operators';
+import { isEmptyObject } from './helpers';
 import { Token, User } from './interface';
 import { LoginService } from './login.service';
 import { TokenService } from './token.service';
@@ -11,10 +11,7 @@ import { TokenService } from './token.service';
 })
 export class AuthService {
   private user$ = new BehaviorSubject<User>({});
-  private change$ = merge(
-    this.tokenService.change(),
-    this.tokenService.refresh().pipe(switchMap(() => this.refresh()))
-  ).pipe(share());
+  private change$ = merge(this.tokenService.change()).pipe(share());
 
   constructor(private loginService: LoginService, private tokenService: TokenService) {}
 
@@ -40,16 +37,6 @@ export class AuthService {
       }),
       map(() => this.check())
     );
-  }
-
-  refresh() {
-    return this.loginService
-      .refresh(filterObject({ refresh_token: this.tokenService.getRefreshToken() }))
-      .pipe(
-        catchError(() => of(undefined)),
-        tap(token => this.tokenService.set(token)),
-        map(() => this.check())
-      );
   }
 
   logout() {
