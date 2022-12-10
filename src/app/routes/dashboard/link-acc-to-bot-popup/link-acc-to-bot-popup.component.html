@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="linkAccForm" style="width: 400px">
+<form class="form" [formGroup]="linkAccForm">
   <mat-form-field appearance="fill">
     <mat-label> SL Account Username</mat-label>
     <input
@@ -11,10 +11,10 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>SL Account Password</mat-label>
-    <input required matInput name="loginPassword" formControlName="loginPassword"
+    <input type="password" required matInput name="loginPassword" formControlName="loginPassword"
   /></mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Spawn Location</mat-label>
+    <mat-label>Login Location</mat-label>
     <mat-select
       matNativeControl
       required

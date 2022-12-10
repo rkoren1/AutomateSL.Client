@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AddBotForm } from '@shared/Models/forms.model';
 
 @Component({
   selector: 'app-add-bot-popup',
@@ -8,6 +9,14 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AddBotPopupComponent implements OnInit {
   botNameValue: string;
+  addBotForm: FormGroup<AddBotForm>;
   constructor() {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.addBotForm = new FormGroup<AddBotForm>({
+      botType: new FormControl(),
+      slUsername: new FormControl(),
+      slPassword: new FormControl(),
+      loginLocation: new FormControl(),
+    });
+  }
 }
