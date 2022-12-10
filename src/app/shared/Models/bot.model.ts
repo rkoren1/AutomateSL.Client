@@ -1,6 +1,6 @@
 export interface Bots {
   id: number;
-  name: string;
+  loginName: string;
   running: boolean;
 }
 

@@ -5,7 +5,7 @@
       <mat-card class="bot">
         <div class="fa-solid fa-xmark delete-icon" (click)="removeBot(bot.id)"></div>
         <div class="fa-solid fa-gear gear-icon" (click)="linkAccToBot(bot.id)"></div>
-        <div class="bot-name">{{ bot.name }}</div>
+        <div class="bot-name">{{ bot.loginName }}</div>
         <div
           [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
           (click)="startStopBot(bot.id, bot.running)"
