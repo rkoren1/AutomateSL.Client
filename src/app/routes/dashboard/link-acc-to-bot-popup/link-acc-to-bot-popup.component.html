@@ -30,18 +30,6 @@
     <mat-label>Region Name</mat-label>
     <input required matInput name="regionName" formControlName="loginRegion"
   /></mat-form-field>
-  <mat-form-field appearance="fill" *ngIf="selectedSpawnLocation === 'region'">
-    <mat-label>X</mat-label>
-    <input required matInput name="x" formControlName="loginRegionX"
-  /></mat-form-field>
-  <mat-form-field appearance="fill" *ngIf="selectedSpawnLocation === 'region'">
-    <mat-label>Y</mat-label>
-    <input required matInput name="y" formControlName="loginRegionY"
-  /></mat-form-field>
-  <mat-form-field appearance="fill" *ngIf="selectedSpawnLocation === 'region'">
-    <mat-label>Z</mat-label>
-    <input required matInput name="z" formControlName="loginRegionZ"
-  /></mat-form-field>
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>

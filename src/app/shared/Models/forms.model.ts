@@ -5,7 +5,4 @@ export interface LinkAccForm {
   loginPassword: FormControl<string>;
   loginSpawnLocation: FormControl<string>;
   loginRegion?: FormControl<string>;
-  loginRegionX?: FormControl<number>;
-  loginRegionY?: FormControl<number>;
-  loginRegionZ?: FormControl<number>;
 }

@@ -37,15 +37,6 @@ export class LinkAccToBotPopupComponent implements OnInit {
       loginRegion: new FormControl(this.data.botConfiguration.loginRegion, {
         nonNullable: true,
       }),
-      loginRegionX: new FormControl(this.data.botConfiguration.loginRegionX, {
-        nonNullable: true,
-      }),
-      loginRegionY: new FormControl(this.data.botConfiguration.loginRegionY, {
-        nonNullable: true,
-      }),
-      loginRegionZ: new FormControl(this.data.botConfiguration.loginRegionZ, {
-        nonNullable: true,
-      }),
     });
   }
 

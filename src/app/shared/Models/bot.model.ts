@@ -9,9 +9,6 @@ export interface ILinkAccData {
   loginPassword: string;
   loginSpawnLocation: string;
   loginRegion: string;
-  loginRegionX: number;
-  loginRegionY: number;
-  loginRegionZ: number;
 }
 
 export interface IRemoveBot {
