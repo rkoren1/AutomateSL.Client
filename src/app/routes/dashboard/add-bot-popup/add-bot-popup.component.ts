@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { IBotTypes } from '@shared/Models/bot.model';
 import { AddBotForm } from '@shared/Models/forms.model';
 
 @Component({
@@ -10,7 +12,9 @@ import { AddBotForm } from '@shared/Models/forms.model';
 export class AddBotPopupComponent implements OnInit {
   botNameValue: string;
   addBotForm: FormGroup<AddBotForm>;
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: IBotTypes[]) {
+    console.log(data);
+  }
   ngOnInit() {
     this.addBotForm = new FormGroup<AddBotForm>({
       botType: new FormControl(),

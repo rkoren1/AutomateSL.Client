@@ -22,3 +22,7 @@ export interface IStartBot {
 export interface IStopBot {
   success: boolean;
 }
+export interface IBotTypes {
+  id: number;
+  botType: string;
+}

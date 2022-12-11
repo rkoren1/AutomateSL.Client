@@ -1,15 +1,13 @@
-<form class="form">
+<form class="form" [formGroup]="addBotForm">
   <mat-form-field appearance="fill">
     <mat-label>Type of Bot</mat-label>
     <mat-select matNativeControl required formControlName="botType">
-      <mat-option value="home">Home</mat-option>
-      <mat-option value="last">Last</mat-option>
-      <mat-option value="region">Region</mat-option>
+      <mat-option *ngFor="let bot of data" [value]="bot.id">{{ bot.botType }}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
     <mat-label>SL Username</mat-label>
-    <input matInput [(ngModel)]="botNameValue" name="botName" formControlName="slUsername" />
+    <input matInput name="botName" formControlName="slUsername" />
   </mat-form-field>
   <mat-form-field>
     <mat-label>SL Password</mat-label>

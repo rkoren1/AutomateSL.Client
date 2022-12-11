@@ -32,12 +32,15 @@ export class DashboardComponent implements OnInit {
   }
 
   addBot() {
-    const dialogRef = this.dialog.open(AddBotPopupComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if (result)
-        this.dashboardService.addBot(result).subscribe(res => {
-          this.getAllBots();
-        });
+    this.dashboardService.getBotTypes().subscribe(res => {
+      const dialogRef = this.dialog.open(AddBotPopupComponent, { data: res });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result)
+          this.dashboardService.addBot(result).subscribe(res => {
+            this.getAllBots();
+          });
+      });
     });
   }
   linkAccToBot(botId: number) {
