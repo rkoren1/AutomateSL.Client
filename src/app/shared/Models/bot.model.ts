@@ -26,3 +26,14 @@ export interface IBotTypes {
   id: number;
   botType: string;
 }
+
+export interface IAddBot {
+  packageId: number;
+  slUserName: string;
+  loginPassword: string;
+  loginSpawnLocation: string;
+  loginRegion: string;
+}
+export interface IAddBotResponse {
+  success: boolean;
+}

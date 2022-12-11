@@ -7,18 +7,31 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>SL Username</mat-label>
-    <input matInput name="botName" formControlName="slUsername" />
+    <input matInput name="botName" formControlName="slUserName" required />
   </mat-form-field>
   <mat-form-field>
     <mat-label>SL Password</mat-label>
-    <input type="password" matInput name="password" formControlName="slPassword" />
+    <input type="password" matInput name="password" formControlName="slPassword" required />
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Login Location</mat-label>
-    <input matInput name="loginLocation" formControlName="loginLocation" />
+    <mat-select
+      matNativeControl
+      required
+      [(value)]="selectedSpawnLocation"
+      formControlName="loginSpawnLocation"
+    >
+      <mat-option value="last">Last</mat-option>
+      <mat-option value="home">Home</mat-option>
+      <mat-option value="region">Region</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="selectedSpawnLocation === 'region'">
+    <mat-label>Region/X/Y/Z or URL</mat-label>
+    <input matInput name="loginRegion" formControlName="loginRegion" required />
   </mat-form-field>
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="botNameValue">Confirm</button>
+  <button mat-button (click)="validateForm()">Confirm</button>
 </mat-dialog-actions>

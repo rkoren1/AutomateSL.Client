@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Bots } from '@shared/Models/bot.model';
+import { Bots, IAddBot } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
 import { LinkAccToBotPopupComponent } from './link-acc-to-bot-popup/link-acc-to-bot-popup.component';
@@ -36,10 +36,18 @@ export class DashboardComponent implements OnInit {
       const dialogRef = this.dialog.open(AddBotPopupComponent, { data: res });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result)
-          this.dashboardService.addBot(result).subscribe(res => {
-            this.getAllBots();
+        if (result) {
+          const reqBody: IAddBot = {
+            packageId: result.botType,
+            slUserName: result.slUserName,
+            loginPassword: result.slPassword,
+            loginSpawnLocation: result.loginSpawnLocation,
+            loginRegion: result.loginRegion,
+          };
+          this.dashboardService.addBot(reqBody).subscribe(res => {
+            if (res.success) this.getAllBots();
           });
+        }
       });
     });
   }

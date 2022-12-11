@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IBotTypes } from '@shared/Models/bot.model';
 import { AddBotForm } from '@shared/Models/forms.model';
 
@@ -10,17 +10,37 @@ import { AddBotForm } from '@shared/Models/forms.model';
   styleUrls: ['./add-bot-popup.component.scss'],
 })
 export class AddBotPopupComponent implements OnInit {
-  botNameValue: string;
   addBotForm: FormGroup<AddBotForm>;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: IBotTypes[]) {
-    console.log(data);
-  }
+  selectedSpawnLocation: string;
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: IBotTypes[],
+    private dialogRef: MatDialogRef<AddBotPopupComponent>
+  ) {}
   ngOnInit() {
     this.addBotForm = new FormGroup<AddBotForm>({
-      botType: new FormControl(),
-      slUsername: new FormControl(),
-      slPassword: new FormControl(),
-      loginLocation: new FormControl(),
+      botType: new FormControl(null, {
+        nonNullable: true,
+      }),
+      slUserName: new FormControl(null, {
+        nonNullable: true,
+      }),
+      slPassword: new FormControl(null, {
+        nonNullable: true,
+      }),
+      loginSpawnLocation: new FormControl('last', {
+        nonNullable: true,
+      }),
+      loginRegion: new FormControl(null, {
+        nonNullable: true,
+      }),
     });
+  }
+
+  validateForm() {
+    this.addBotForm.markAllAsTouched();
+
+    if (this.addBotForm.valid) {
+      this.dialogRef.close(this.addBotForm.value);
+    }
   }
 }

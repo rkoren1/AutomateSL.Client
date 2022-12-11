@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import {
   Bots,
+  IAddBot,
+  IAddBotResponse,
   IBotTypes,
   ILinkAccData,
   IRemoveBot,
@@ -19,8 +21,8 @@ export class DashboardService {
   getBots() {
     return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
   }
-  addBot(botName: string) {
-    return this.http.post(environment.apiUrl + '/bot/createbot', { name: botName });
+  addBot(data: IAddBot) {
+    return this.http.post<IAddBotResponse>(environment.apiUrl + '/bot/createbot', data);
   }
   getBotConfiguration(botId: number) {
     const params = new HttpParams().append('botId', botId);
