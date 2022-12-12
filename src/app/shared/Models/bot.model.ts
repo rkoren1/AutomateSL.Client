@@ -3,6 +3,7 @@ export interface Bots {
   loginName: string;
   running: boolean;
   uuid: string;
+  imageId: string;
 }
 
 export interface ILinkAccData {
