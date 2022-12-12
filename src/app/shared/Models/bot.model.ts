@@ -2,6 +2,7 @@ export interface Bots {
   id: number;
   loginName: string;
   running: boolean;
+  uuid: string;
 }
 
 export interface ILinkAccData {

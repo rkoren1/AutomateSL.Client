@@ -36,9 +36,16 @@
   justify-content: center;
 }
 
+.delete-icon {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  cursor: pointer;
+}
+
 .gear-icon {
   position: absolute;
-  right: 35px;
+  right: 15px;
   top: 8px;
   cursor: pointer;
 }
@@ -52,11 +59,4 @@
 .start-icon {
   cursor: pointer;
   text-align: center;
-}
-
-.delete-icon {
-  position: absolute;
-  right: 15px;
-  top: 8px;
-  cursor: pointer;
 }
