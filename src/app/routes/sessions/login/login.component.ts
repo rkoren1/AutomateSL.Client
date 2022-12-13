@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '@core/authentication';
+import { AuthService, Token, TokenService } from '@core/authentication';
 import { LoginService } from './login.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class LoginComponent {
     private fb: FormBuilder,
     private router: Router,
     private auth: AuthService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private tokenService: TokenService
   ) {}
 
   get username() {
@@ -43,7 +44,10 @@ export class LoginComponent {
       .subscribe({
         next: res => {
           if (res.authenticated === true) {
-            this.loginService.setAccessToken(res.access_token);
+            const token: Token = {
+              access_token: res.access_token,
+            };
+            this.tokenService.set(token);
             this.router.navigateByUrl('/dashboard');
             this.isSubmitting = false;
             this.auth.assignNewUser(res.email);

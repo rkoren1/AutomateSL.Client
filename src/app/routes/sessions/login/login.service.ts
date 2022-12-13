@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Token } from '@core';
+import { Token, TokenService } from '@core';
 import { environment } from '@env/environment';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { environment } from '@env/environment';
 export class LoginService {
   access_token = '';
   executeOnce = true;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   authenticate(email: string, password: string, rememberMe: boolean) {
     return this.http.post<Token>(
@@ -21,23 +21,18 @@ export class LoginService {
     );
   }
 
-  setAccessToken(token: string) {
-    this.access_token = token;
-  }
   refresh() {
     this.http
       .get<Token>(environment.apiUrl + '/refreshtoken', { withCredentials: true })
       .subscribe(res => {
+        const token: Token = {
+          access_token: res.access_token,
+          exp: 1500,
+          expires_in: 1500,
+        };
+        this.tokenService.set(token);
         this.access_token = res?.access_token;
       });
-  }
-
-  getAccessToken() {
-    if (this.access_token === '' && this.executeOnce) {
-      this.executeOnce = false;
-      this.refresh();
-    }
-    return this.access_token;
   }
 
   logout() {
