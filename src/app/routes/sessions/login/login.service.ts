@@ -27,8 +27,8 @@ export class LoginService {
       .subscribe(res => {
         const token: Token = {
           access_token: res.access_token,
-          exp: 1500,
-          expires_in: 1500,
+          exp: 15,
+          expires_in: 15,
         };
         this.tokenService.set(token);
         this.access_token = res?.access_token;

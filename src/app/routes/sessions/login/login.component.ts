@@ -46,6 +46,10 @@ export class LoginComponent {
           if (res.authenticated === true) {
             const token: Token = {
               access_token: res.access_token,
+              authenticated: true,
+              exp: 10,
+              expires_in: 10,
+              email: res.email,
             };
             this.tokenService.set(token);
             this.router.navigateByUrl('/dashboard');

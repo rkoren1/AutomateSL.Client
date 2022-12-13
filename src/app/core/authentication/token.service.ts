@@ -35,7 +35,6 @@ export class TokenService implements OnDestroy {
 
   refresh(): Observable<BaseToken | undefined> {
     this.buildRefresh();
-
     return this.refresh$.pipe(share());
   }
 
@@ -57,7 +56,9 @@ export class TokenService implements OnDestroy {
     return this.token?.getBearerToken() ?? '';
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.clearRefresh();
+  }
 
   private save(token?: Token): void {
     this._token = undefined;
@@ -76,10 +77,17 @@ export class TokenService implements OnDestroy {
   }
 
   private buildRefresh() {
+    this.clearRefresh();
+
     if (this.token?.needRefresh()) {
       this.timer$ = timer(this.token.getRefreshTime() * 1000).subscribe(() => {
         this.refresh$.next(this.token);
       });
+    }
+  }
+  private clearRefresh() {
+    if (this.timer$ && !this.timer$.closed) {
+      this.timer$.unsubscribe();
     }
   }
 }
