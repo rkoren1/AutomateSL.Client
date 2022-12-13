@@ -11,7 +11,7 @@ import { TokenFactory } from './token-factory.service';
   providedIn: 'root',
 })
 export class TokenService implements OnDestroy {
-  private key = 'lifebots-token';
+  private key = 'token';
 
   private change$ = new BehaviorSubject<BaseToken | undefined>(undefined);
   private refresh$ = new Subject<BaseToken | undefined>();
@@ -35,6 +35,7 @@ export class TokenService implements OnDestroy {
 
   refresh(): Observable<BaseToken | undefined> {
     this.buildRefresh();
+
     return this.refresh$.pipe(share());
   }
 
@@ -54,6 +55,10 @@ export class TokenService implements OnDestroy {
 
   getBearerToken(): string {
     return this.token?.getBearerToken() ?? '';
+  }
+
+  getRefreshToken(): string | void {
+    return this.token?.refresh_token;
   }
 
   ngOnDestroy(): void {
@@ -85,6 +90,7 @@ export class TokenService implements OnDestroy {
       });
     }
   }
+
   private clearRefresh() {
     if (this.timer$ && !this.timer$.closed) {
       this.timer$.unsubscribe();
