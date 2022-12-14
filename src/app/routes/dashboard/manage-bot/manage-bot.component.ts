@@ -9,7 +9,12 @@ import { ManageBotService } from './manage-bot.service';
   styleUrls: ['./manage-bot.component.scss'],
 })
 export class ManageBotComponent implements OnInit {
-  botData: ILinkAccData;
+  botData: ILinkAccData = {
+    loginFirstName: '',
+    loginPassword: '',
+    loginSpawnLocation: '',
+    loginRegion: '',
+  };
   constructor(private route: ActivatedRoute, private manageBotService: ManageBotService) {}
 
   ngOnInit() {
