@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ILinkAccData } from '@shared/Models/bot.model';
+import { ManageBotService } from './manage-bot.service';
 
 @Component({
   selector: 'app-manage-bot',
@@ -7,9 +9,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./manage-bot.component.scss'],
 })
 export class ManageBotComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  botData: ILinkAccData;
+  constructor(private route: ActivatedRoute, private manageBotService: ManageBotService) {}
 
   ngOnInit() {
-    console.log(this.route.snapshot.params.id);
+    this.manageBotService.getBotConfiguration(this.route.snapshot.params.id).subscribe(res => {
+      this.botData = res;
+      console.log(res);
+    });
   }
 }

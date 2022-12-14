@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Bots, IAddBot } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
@@ -15,7 +16,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     private cd: ChangeDetectorRef,
     private dialog: MatDialog,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private router: Router
   ) {}
 
   allBots: [Bots];
@@ -77,5 +79,8 @@ export class DashboardComponent implements OnInit {
         if (res.success === true) this.getAllBots();
       });
     }
+  }
+  manageBot(botId: number) {
+    this.router.navigateByUrl('/dashboard/' + botId);
   }
 }

@@ -8,7 +8,7 @@
           [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
         />
         <!-- <div class="fa-solid fa-xmark delete-icon" (click)="removeBot(bot.id)"></div> -->
-        <div class="fa-solid fa-gear gear-icon" (click)="linkAccToBot(bot.id)"></div>
+        <div class="fa-solid fa-gear gear-icon" (click)="manageBot(bot.id)"></div>
         <div class="bot-name">{{ bot.loginName }}</div>
         <div
           [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
