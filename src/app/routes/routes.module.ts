@@ -10,6 +10,7 @@ import { Error404Component } from './sessions/404.component';
 import { Error500Component } from './sessions/500.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
+import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
 
 const COMPONENTS: any[] = [
   DashboardComponent,
@@ -20,6 +21,7 @@ const COMPONENTS: any[] = [
   Error500Component,
   AddBotPopupComponent,
   LinkAccToBotPopupComponent,
+  ManageBotComponent,
 ];
 const COMPONENTS_DYNAMIC: any[] = [];
 
