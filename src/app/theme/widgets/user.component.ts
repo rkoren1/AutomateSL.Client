@@ -12,7 +12,7 @@ import { AuthService, User } from '@core/authentication';
       [matMenuTriggerFor]="menu"
     >
       <img class="matero-avatar" src="assets/images/account-avatar.png" width="32" alt="avatar" />
-      <span class="matero-username" fxHide.lt-sm>{{ user.name }}</span>
+      <span class="matero-username" fxHide.lt-sm>{{ username.email }}</span>
     </button>
 
     <mat-menu #menu="matMenu">
@@ -33,10 +33,13 @@ import { AuthService, User } from '@core/authentication';
 })
 export class UserComponent implements OnInit {
   user!: User;
+  username: any;
 
   constructor(private router: Router, private auth: AuthService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+    const tmp = localStorage.getItem('token') || '{}';
+    this.username = JSON.parse(tmp);
     this.auth
       .user()
       .pipe(
