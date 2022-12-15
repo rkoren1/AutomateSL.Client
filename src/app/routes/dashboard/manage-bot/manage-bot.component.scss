@@ -20,6 +20,10 @@
 .mat-card {
   display: flex;
   height: 180px;
+  cursor: pointer;
+}
+.mat-card:hover {
+  filter: invert(75%);
 }
 .mat-card-wrapper {
   margin-top: 10px;

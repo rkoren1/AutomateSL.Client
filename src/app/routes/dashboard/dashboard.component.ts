@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Bots, IAddBot } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
-import { LinkAccToBotPopupComponent } from './link-acc-to-bot-popup/link-acc-to-bot-popup.component';
+import { LinkAccToBotPopupComponent } from './manage-bot/link-acc-to-bot-popup/link-acc-to-bot-popup.component';
 
 @Component({
   selector: 'app-dashboard',
