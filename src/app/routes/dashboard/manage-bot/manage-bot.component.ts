@@ -11,7 +11,6 @@ import { ManageBotService } from './manage-bot.service';
 export class ManageBotComponent implements OnInit {
   botData: ILinkAccData = {
     loginFirstName: '',
-    loginPassword: '',
     loginSpawnLocation: '',
     loginRegion: '',
   };

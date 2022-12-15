@@ -15,7 +15,6 @@ export class LinkAccToBotPopupService {
       environment.apiUrl + '/bot/linkacctobot',
       {
         loginFirstName: data.loginFirstName,
-        loginPassword: data.loginPassword,
         loginSpawnLocation: data.loginSpawnLocation,
         loginRegion: data.loginRegion,
       },

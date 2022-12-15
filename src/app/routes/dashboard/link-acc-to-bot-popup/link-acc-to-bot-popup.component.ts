@@ -28,9 +28,7 @@ export class LinkAccToBotPopupComponent implements OnInit {
       loginFirstName: new FormControl(this.data.botConfiguration.loginFirstName, {
         nonNullable: true,
       }),
-      loginPassword: new FormControl(this.data.botConfiguration.loginPassword, {
-        nonNullable: true,
-      }),
+      loginPassword: new FormControl(),
       loginSpawnLocation: new FormControl(this.data.botConfiguration.loginSpawnLocation, {
         nonNullable: true,
       }),

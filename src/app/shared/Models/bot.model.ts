@@ -8,7 +8,6 @@ export interface Bots {
 
 export interface ILinkAccData {
   loginFirstName: string;
-  loginPassword: string;
   loginSpawnLocation: string;
   loginRegion: string;
 }
