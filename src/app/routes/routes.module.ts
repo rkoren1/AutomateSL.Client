@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
 import { RoutesRoutingModule } from './routes-routing.module';
 
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AddBotPopupComponent } from './dashboard/add-bot-popup/add-bot-popup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccessCodePopupComponent } from './dashboard/manage-bot/access-code-popup/access-code-popup.component';
@@ -32,7 +33,7 @@ const COMPONENTS: any[] = [
 const COMPONENTS_DYNAMIC: any[] = [];
 
 @NgModule({
-  imports: [SharedModule, RoutesRoutingModule],
+  imports: [SharedModule, RoutesRoutingModule, ClipboardModule],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
 })
 export class RoutesModule {}

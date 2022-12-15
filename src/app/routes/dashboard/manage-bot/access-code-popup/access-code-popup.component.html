@@ -1,3 +1,9 @@
-<p>
-  access-code-popup works!
-</p>
+<mat-form-field appearance="fill">
+  <mat-label>Access Code</mat-label>
+  <input type="text" matInput name="accessCode" [readonly]="true" [(ngModel)]="accessCodeValue"
+/></mat-form-field>
+<button [cdkCopyToClipboard]="accessCodeValue" mat-stroked-button>Copy to clipboard</button>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="confirm()">Confirm</button>
+</mat-dialog-actions>

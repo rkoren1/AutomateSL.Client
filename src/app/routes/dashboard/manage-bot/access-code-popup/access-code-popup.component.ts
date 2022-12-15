@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./access-code-popup.component.scss'],
 })
 export class AccessCodePopupComponent implements OnInit {
+  accessCodeValue = 'test';
   constructor() {}
 
   ngOnInit() {}
+  confirm() {}
 }
