@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ILinkAccData } from '@shared/Models/bot.model';
-import { LinkAccToBotPopupComponent } from './link-acc-to-bot-popup/link-acc-to-bot-popup.component';
+import { AccessCodePopupComponent } from './access-code-popup/access-code-popup.component';
+import { AccountSettingsPopupComponent } from './account-settings-popup/account-settings-popup.component';
+import { BotSettingsPopupComponent } from './bot-settings-popup/bot-settings-popup.component';
 import { ManageBotService } from './manage-bot.service';
+import { StartupPopupComponent } from './startup-popup/startup-popup.component';
 
 @Component({
   selector: 'app-manage-bot',
@@ -31,9 +34,15 @@ export class ManageBotComponent implements OnInit {
     });
   }
   startupPopup(botId: number) {
-    const dialogRef = this.dialog.open(LinkAccToBotPopupComponent);
+    const dialogRef = this.dialog.open(StartupPopupComponent);
   }
-  botAccessCodePopup(botId: number) {}
-  botAccountSettingsPopup(botId: number) {}
-  botSettingsPopup(botId: number) {}
+  botAccessCodePopup(botId: number) {
+    const dialogRef = this.dialog.open(AccessCodePopupComponent);
+  }
+  botAccountSettingsPopup(botId: number) {
+    const dialogRef = this.dialog.open(AccountSettingsPopupComponent);
+  }
+  botSettingsPopup(botId: number) {
+    const dialogRef = this.dialog.open(BotSettingsPopupComponent);
+  }
 }

@@ -4,8 +4,11 @@ import { RoutesRoutingModule } from './routes-routing.module';
 
 import { AddBotPopupComponent } from './dashboard/add-bot-popup/add-bot-popup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LinkAccToBotPopupComponent } from './dashboard/manage-bot/link-acc-to-bot-popup/link-acc-to-bot-popup.component';
+import { AccessCodePopupComponent } from './dashboard/manage-bot/access-code-popup/access-code-popup.component';
+import { AccountSettingsPopupComponent } from './dashboard/manage-bot/account-settings-popup/account-settings-popup.component';
+import { BotSettingsPopupComponent } from './dashboard/manage-bot/bot-settings-popup/bot-settings-popup.component';
 import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
+import { StartupPopupComponent } from './dashboard/manage-bot/startup-popup/startup-popup.component';
 import { Error403Component } from './sessions/403.component';
 import { Error404Component } from './sessions/404.component';
 import { Error500Component } from './sessions/500.component';
@@ -20,8 +23,11 @@ const COMPONENTS: any[] = [
   Error404Component,
   Error500Component,
   AddBotPopupComponent,
-  LinkAccToBotPopupComponent,
   ManageBotComponent,
+  BotSettingsPopupComponent,
+  StartupPopupComponent,
+  AccessCodePopupComponent,
+  AccountSettingsPopupComponent,
 ];
 const COMPONENTS_DYNAMIC: any[] = [];
 

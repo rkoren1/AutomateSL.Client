@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Bots, IAddBot } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
-import { LinkAccToBotPopupComponent } from './manage-bot/link-acc-to-bot-popup/link-acc-to-bot-popup.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -52,17 +51,6 @@ export class DashboardComponent implements OnInit {
         }
       });
     });
-  }
-  linkAccToBot(botId: number) {
-    this.dashboardService.getBotConfiguration(botId).subscribe(res => {
-      const dialogRef = this.dialog.open(LinkAccToBotPopupComponent, {
-        data: { botId, botConfiguration: res },
-      });
-    });
-
-    /* dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    }); */
   }
   removeBot(botId: number) {
     this.dashboardService.removeBot(botId).subscribe(res => {

@@ -1,18 +1,4 @@
-<form class="form" [formGroup]="linkAccForm">
-  <mat-form-field appearance="fill">
-    <mat-label> SL Username</mat-label>
-    <input
-      required
-      matInput
-      name="loginFirstName"
-      formControlName="loginFirstName"
-      cdkFocusInitial
-    />
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>SL Password</mat-label>
-    <input type="password" required matInput name="loginPassword" formControlName="loginPassword"
-  /></mat-form-field>
+<form class="form" [formGroup]="startupForm">
   <mat-form-field appearance="fill">
     <mat-label>Login Location</mat-label>
     <mat-select
@@ -30,8 +16,12 @@
     <mat-label>Region Name</mat-label>
     <input required matInput name="regionName" formControlName="loginRegion"
   /></mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label> Object to sit on startup</mat-label>
+    <input required matInput name="startupObject" formControlName="startupObject" />
+  </mat-form-field>
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="validateForm()">Confirm</button>
+  <button mat-button (click)="validateForm()">Save</button>
 </mat-dialog-actions>
