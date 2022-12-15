@@ -2,7 +2,9 @@
   <mat-label>Access Code</mat-label>
   <input type="text" matInput name="accessCode" [readonly]="true" [(ngModel)]="accessCodeValue"
 /></mat-form-field>
-<button [cdkCopyToClipboard]="accessCodeValue" mat-stroked-button>Copy to clipboard</button>
+<button [cdkCopyToClipboard]="accessCodeValue" mat-stroked-button class="copy-button">
+  <i class="fa-regular fa-copy" style="font-size: 2rem"></i>
+</button>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button (click)="confirm()">Confirm</button>
