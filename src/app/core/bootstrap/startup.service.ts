@@ -21,10 +21,16 @@ export class StartupService {
    */
   load() {
     return new Promise<void>((resolve, reject) => {
-      this.authService.change().subscribe(
-        () => resolve(),
-        () => resolve()
-      );
+      this.authService
+        .change()
+        .pipe(
+          switchMap(() => this.authService.menu()),
+          tap(menu => this.setMenu(menu))
+        )
+        .subscribe(
+          () => resolve(),
+          () => resolve()
+        );
     });
   }
 

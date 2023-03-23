@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, merge, of } from 'rxjs';
+import { BehaviorSubject, iif, merge, of } from 'rxjs';
 import { catchError, map, share, switchMap, tap } from 'rxjs/operators';
 import { filterObject } from './helpers';
 import { User } from './interface';
@@ -24,6 +24,10 @@ export class AuthService {
 
   change() {
     return this.change$;
+  }
+
+  menu() {
+    return iif(() => this.check(), this.loginService.menu(), of([]));
   }
 
   check() {

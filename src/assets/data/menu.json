@@ -1,17 +1,13 @@
 {
   "menu": [
     {
-      "route": "dashboard",
+      "route": "/",
       "name": "dashboard",
       "type": "link",
-      "icon": "dashboard",
-      "badge": {
-        "color": "red-500",
-        "value": "5"
-      }
+      "icon": "dashboard"
     },
     {
-      "route": "/",
+      "route": "dashboard/",
       "name": "sessions",
       "type": "sub",
       "icon": "question_answer",

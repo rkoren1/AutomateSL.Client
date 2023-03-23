@@ -30,7 +30,6 @@ export class ManageBotComponent implements OnInit {
     this.botId = this.route.snapshot.params.id;
     this.manageBotService.getBotConfiguration(this.botId).subscribe(res => {
       this.botData = res;
-      console.log(res);
     });
   }
   startupPopup(botId: number) {
