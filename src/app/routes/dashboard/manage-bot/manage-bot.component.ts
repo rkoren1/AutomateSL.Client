@@ -15,11 +15,11 @@ import { StartupPopupComponent } from './startup-popup/startup-popup.component';
 })
 export class ManageBotComponent implements OnInit {
   botData: ILinkAccData = {
+    id: -1,
     loginFirstName: '',
     loginSpawnLocation: '',
     loginRegion: '',
   };
-  botId: number;
   constructor(
     private route: ActivatedRoute,
     private manageBotService: ManageBotService,
@@ -27,8 +27,9 @@ export class ManageBotComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.botId = this.route.snapshot.params.id;
-    this.manageBotService.getBotConfiguration(this.botId).subscribe(res => {
+    const firstName = this.route.snapshot.params.id.split('-')[0];
+    const LastName = this.route.snapshot.params.id.split('-')[1];
+    this.manageBotService.getBotConfiguration(firstName, LastName).subscribe(res => {
       this.botData = res;
     });
   }

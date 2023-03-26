@@ -8,7 +8,7 @@
 <hr />
 <div class="tiles-wrapper">
   <div class="mat-card-wrapper">
-    <mat-card class="mat-card" (click)="startupPopup(botId)">
+    <mat-card class="mat-card" (click)="startupPopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-rocket startup-icon"></div></div>
       <div class="content-wrapper">
         <mat-card-title>Startup</mat-card-title
@@ -19,7 +19,7 @@
     </mat-card>
   </div>
   <div class="mat-card-wrapper">
-    <mat-card class="mat-card" (click)="botAccessCodePopup(botId)">
+    <mat-card class="mat-card" (click)="botAccessCodePopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-lock startup-icon"></div></div>
       <div class="content-wrapper">
         <mat-card-title>Bot Access Code</mat-card-title
@@ -30,7 +30,7 @@
     </mat-card>
   </div>
   <div class="mat-card-wrapper">
-    <mat-card class="mat-card" (click)="botAccountSettingsPopup(botId)">
+    <mat-card class="mat-card" (click)="botAccountSettingsPopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-id-card startup-icon"></div></div>
       <div class="content-wrapper">
         <mat-card-title>Bot Account Settings</mat-card-title
@@ -39,7 +39,7 @@
     </mat-card>
   </div>
   <div class="mat-card-wrapper">
-    <mat-card class="mat-card" (click)="botSettingsPopup(botId)">
+    <mat-card class="mat-card" (click)="botSettingsPopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-robot startup-icon"></div></div>
       <div class="content-wrapper">
         <mat-card-title>Bot Settings</mat-card-title

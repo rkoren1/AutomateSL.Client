@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit {
       });
     }
   }
-  manageBot(botId: number) {
-    this.router.navigateByUrl('/dashboard/' + botId);
+  manageBot(loginName: string, loginLastName: string) {
+    this.router.navigateByUrl('/dashboard/' + loginName + '-' + loginLastName);
   }
 }

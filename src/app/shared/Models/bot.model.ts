@@ -1,12 +1,14 @@
 export interface Bots {
   id: number;
   loginName: string;
+  loginLastName: string;
   running: boolean;
   uuid: string;
   imageId: string;
 }
 
 export interface ILinkAccData {
+  id: number;
   loginFirstName: string;
   loginSpawnLocation: string;
   loginRegion: string;
