@@ -28,7 +28,7 @@ export class LoginService {
         route: 'dashboard/',
         name: 'bots',
         type: 'sub',
-        icon: 'question_answer',
+        icon: 'account_box',
         children: [],
       },
     ];
