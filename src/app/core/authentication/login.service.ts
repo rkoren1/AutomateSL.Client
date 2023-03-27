@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Menu } from '@core/bootstrap/menu.service';
 import { environment } from '@env/environment';
-import { map } from 'rxjs';
+import { Bots } from '@shared/Models/bot.model';
+import { of } from 'rxjs';
 import { Token } from './interface';
 
 @Injectable({
@@ -11,10 +12,37 @@ import { Token } from './interface';
 export class LoginService {
   constructor(protected http: HttpClient) {}
 
+  getBots() {
+    return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
+  }
+
   menu() {
-    return this.http
-      .get<{ menu: Menu[] }>('assets/data/menu.json?_t=' + Date.now())
-      .pipe(map(res => res.menu));
+    const menu: Menu[] = [
+      {
+        route: '/',
+        name: 'dashboard',
+        type: 'link',
+        icon: 'dashboard',
+      },
+      {
+        route: 'dashboard/',
+        name: 'bots',
+        type: 'sub',
+        icon: 'question_answer',
+        children: [],
+      },
+    ];
+    this.getBots().subscribe(bots => {
+      bots.forEach(bot => {
+        menu[1].children?.push({
+          route: bot.loginName + '-' + bot.loginLastName,
+          name: bot.loginName,
+          type: 'link',
+        });
+      });
+    });
+
+    return of(menu);
   }
 
   login(email: string, password: string, rememberMe = false) {
