@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
         class="matero-branding-logo-expanded"
         alt="logo"
       />
-      <span class="matero-branding-name">LifeBots</span>
+      <span class="matero-branding-name">AutomateSL</span>
     </a>
   `,
 })

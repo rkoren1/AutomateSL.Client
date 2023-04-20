@@ -2,5 +2,5 @@ export const environment = {
   production: true,
   baseUrl: '',
   useHash: false,
-  apiUrl: 'https://www.lifebots.app/api',
+  apiUrl: 'https://www.automatesl.com/api',
 };
