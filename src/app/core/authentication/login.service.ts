@@ -16,7 +16,7 @@ export class LoginService {
     return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
   }
 
-  menu() {
+  menu(isValidToken: boolean) {
     const menu: Menu[] = [
       {
         route: '/',
@@ -32,15 +32,17 @@ export class LoginService {
         children: [],
       },
     ];
-    this.getBots().subscribe(bots => {
-      bots.forEach(bot => {
-        menu[1].children?.push({
-          route: bot.loginName + '-' + bot.loginLastName,
-          name: bot.loginName,
-          type: 'link',
+    if (isValidToken) {
+      this.getBots().subscribe(bots => {
+        bots.forEach(bot => {
+          menu[1].children?.push({
+            route: bot.loginName + '-' + bot.loginLastName,
+            name: bot.loginName,
+            type: 'link',
+          });
         });
       });
-    });
+    }
 
     return of(menu);
   }

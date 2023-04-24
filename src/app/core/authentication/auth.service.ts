@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   menu() {
-    return iif(() => this.check(), this.loginService.menu(), of([]));
+    return iif(() => this.check(), this.loginService.menu(this.check()), of([]));
   }
 
   check() {
