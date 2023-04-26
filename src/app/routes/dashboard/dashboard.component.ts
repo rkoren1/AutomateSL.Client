@@ -71,4 +71,9 @@ export class DashboardComponent implements OnInit {
   manageBot(loginName: string, loginLastName: string) {
     this.router.navigateByUrl('/dashboard/' + loginName + '-' + loginLastName);
   }
+  refreshBot(botId: number) {
+    this.dashboardService.refreshBotStatus(botId).subscribe(res => {
+      this.getAllBots();
+    });
+  }
 }
