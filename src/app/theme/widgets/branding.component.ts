@@ -5,11 +5,12 @@ import { Component } from '@angular/core';
   template: `
     <a class="matero-branding" href="/">
       <img
-        src="./assets/images/logo-dark-theme.png"
+        src="./assets/images/automateSL_website_logo.png"
+        style="width: 100%; height: 35px;"
         class="matero-branding-logo-expanded"
-        alt="logo"
+        alt="AutomateSL"
       />
-      <span class="matero-branding-name">AutomateSL</span>
+      <!-- <span class="matero-branding-name">AutomateSL</span> -->
     </a>
   `,
 })
