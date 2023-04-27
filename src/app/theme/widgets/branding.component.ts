@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <a class="matero-branding" href="/">
       <img
         src="./assets/images/automateSL_website_logo.png"
-        style="width: 100%; height: 35px;"
+        style="width: 100%; height: 33px;"
         class="matero-branding-logo-expanded"
         alt="AutomateSL"
       />
