@@ -12,6 +12,7 @@ import { Error404Component } from './sessions/404.component';
 import { Error500Component } from './sessions/500.component';
 import { AuthGuard } from '@core';
 import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
+import { HowToRegisterComponent } from './sessions/how-to-register/how-to-register.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,7 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'register', component: HowToRegisterComponent },
     ],
   },
   { path: '**', redirectTo: 'dashboard' },
