@@ -26,9 +26,16 @@ export class LoginService {
       },
       {
         route: 'dashboard/',
-        name: 'bots',
+        name: 'my-bots',
         type: 'sub',
-        icon: 'account_box',
+        icon: 'person',
+        children: [],
+      },
+      {
+        route: 'dashboard/',
+        name: 'shared-bots',
+        type: 'sub',
+        icon: 'people',
         children: [],
       },
     ];
