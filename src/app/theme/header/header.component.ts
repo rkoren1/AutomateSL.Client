@@ -1,13 +1,12 @@
 import {
-  Component,
-  Output,
-  EventEmitter,
-  Input,
   ChangeDetectionStrategy,
-  ViewEncapsulation,
+  Component,
+  EventEmitter,
   HostBinding,
+  Input,
+  Output,
+  ViewEncapsulation,
 } from '@angular/core';
-import screenfull from 'screenfull';
 
 @Component({
   selector: 'app-header',
@@ -24,10 +23,4 @@ export class HeaderComponent {
 
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleSidenavNotice = new EventEmitter<void>();
-
-  toggleFullscreen() {
-    if (screenfull.isEnabled) {
-      screenfull.toggle();
-    }
-  }
 }

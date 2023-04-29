@@ -64,6 +64,7 @@
     "sessions.403": "403",
     "sessions.404": "404",
     "sessions.500": "500",
+    "bots": "Bots",
     "utilities": "Utilities",
     "utilities.css-grid": "CSS Grid",
     "utilities.css-helpers": "CSS Helpers",

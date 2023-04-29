@@ -43,4 +43,10 @@ export class DashboardService {
   getBotTypes() {
     return this.http.get<IBotTypes[]>(environment.apiUrl + '/bot/getbottypes');
   }
+  refreshBotStatus(botId: number) {
+    const params = new HttpParams().append('botId', botId);
+    return this.http.get(environment.apiUrl + '/bot/refreshbotstatus', {
+      params,
+    });
+  }
 }

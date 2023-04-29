@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
-import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 import { AuthService, User } from '@core/authentication';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { switchMap, tap } from 'rxjs/operators';
 import { Menu, MenuService } from './menu.service';
 
 @Injectable({
@@ -21,10 +21,16 @@ export class StartupService {
    */
   load() {
     return new Promise<void>((resolve, reject) => {
-      this.authService.change().subscribe(
-        () => resolve(),
-        () => resolve()
-      );
+      this.authService
+        .change()
+        .pipe(
+          switchMap(() => this.authService.menu()),
+          tap(menu => this.setMenu(menu))
+        )
+        .subscribe({
+          next: () => resolve(),
+          error: () => resolve(),
+        });
     });
   }
 

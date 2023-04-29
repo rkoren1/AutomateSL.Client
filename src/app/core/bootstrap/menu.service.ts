@@ -142,9 +142,9 @@ export class MenuService {
   addNamespace(menu: Menu[] | MenuChildrenItem[], namespace: string) {
     menu.forEach(menuItem => {
       menuItem.name = `${namespace}.${menuItem.name}`;
-      if (menuItem.children && menuItem.children.length > 0) {
+      /* if (menuItem.children && menuItem.children.length > 0) {
         this.addNamespace(menuItem.children, menuItem.name);
-      }
+      } */
     });
   }
 }

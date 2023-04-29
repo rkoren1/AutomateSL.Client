@@ -45,10 +45,20 @@
 }
 
 .gear-icon {
-  position: absolute;
-  right: 15px;
-  top: 8px;
+  position: relative;
+  display: inline-block;
   cursor: pointer;
+}
+
+.refresh-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.icons {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .bot-name {
@@ -63,5 +73,5 @@
 }
 
 .avatar-image {
-  margin-top: 15px;
+  margin-top: 10px;
 }

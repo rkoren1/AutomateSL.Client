@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "lifebots.client": {
+    "automatesl.client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/lifebots.client",
+            "outputPath": "dist/automatesl.client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "lifebots.client:build:production"
+              "browserTarget": "automatesl.client:build:production"
             },
             "development": {
-              "browserTarget": "lifebots.client:build:development"
+              "browserTarget": "automatesl.client:build:development"
             },
             "options": {
               "proxyConfig": "proxy.config.js"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lifebots.client:build"
+            "browserTarget": "automatesl.client:build"
           }
         },
         "test": {
