@@ -6,6 +6,14 @@ export interface Bots {
   uuid: string;
   imageId: string;
 }
+export interface SharedBot {
+  id: number;
+  loginName: string;
+  loginLastName: string;
+  running: boolean;
+  uuid: string;
+  imageId: string;
+}
 
 export interface ILinkAccData {
   id: number;
@@ -31,12 +39,15 @@ export interface IBotTypes {
 }
 
 export interface IAddBot {
-  packageId: number;
   slUserName: string;
   loginPassword: string;
   loginSpawnLocation: string;
   loginRegion: string;
 }
 export interface IAddBotResponse {
+  success: boolean;
+}
+
+export interface ILinkSharedBotToUser {
   success: boolean;
 }

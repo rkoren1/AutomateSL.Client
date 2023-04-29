@@ -8,9 +8,11 @@ export interface LinkAccForm {
 }
 
 export interface AddBotForm {
-  botType: FormControl<string | null>;
   slUserName: FormControl<string | null>;
   slPassword: FormControl<string | null>;
   loginSpawnLocation: FormControl<string>;
   loginRegion: FormControl<string | null>;
+}
+export interface AddSharedBotForm {
+  sharedBotId: FormControl<number | null>;
 }

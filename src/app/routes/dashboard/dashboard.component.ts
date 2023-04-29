@@ -33,21 +33,29 @@ export class DashboardComponent implements OnInit {
   }
 
   addBot() {
-    this.dashboardService.getBotTypes().subscribe(res => {
+    this.dashboardService.getSharedBots().subscribe(res => {
       const dialogRef = this.dialog.open(AddBotPopupComponent, { data: res });
 
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          const reqBody: IAddBot = {
-            packageId: result.botType,
-            slUserName: result.slUserName,
-            loginPassword: result.slPassword,
-            loginSpawnLocation: result.loginSpawnLocation,
-            loginRegion: result.loginRegion,
-          };
-          this.dashboardService.addBot(reqBody).subscribe(res => {
-            if (res.success) this.getAllBots();
-          });
+          if (result.botType === 'my') {
+            const reqBody: IAddBot = {
+              slUserName: result.formValue.slUserName,
+              loginPassword: result.formValue.slPassword,
+              loginSpawnLocation: result.formValue.loginSpawnLocation,
+              loginRegion: result.formValue.loginRegion,
+            };
+            this.dashboardService.addBot(reqBody).subscribe(res => {
+              if (res.success) this.getAllBots();
+            });
+          } else if (result.botType === 'shared') {
+            const reqBody = {
+              id: result.formValue.sharedBotId,
+            };
+            this.dashboardService.linkSharedBotToUser(reqBody.id).subscribe(res => {
+              if (res.success) this.getAllBots();
+            });
+          }
         }
       });
     });

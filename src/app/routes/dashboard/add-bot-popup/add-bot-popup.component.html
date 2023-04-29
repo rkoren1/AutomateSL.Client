@@ -1,10 +1,21 @@
-<form class="form" [formGroup]="addBotForm">
-  <mat-form-field appearance="fill">
-    <mat-label>Type of Bot</mat-label>
-    <mat-select matNativeControl required formControlName="botType">
-      <mat-option *ngFor="let bot of data" [value]="bot.id">{{ bot.botType }}</mat-option>
+<mat-form-field appearance="fill" style="min-width: 100%">
+  <mat-label>Type of Bot</mat-label>
+  <mat-select matNativeControl required [value]="'my'" (selectionChange)="botTypeChanged($event)">
+    <mat-option [value]="'my'">My Bot</mat-option>
+    <mat-option [value]="'shared'">Shared Bot</mat-option>
+  </mat-select>
+</mat-form-field>
+<form [formGroup]="addSharedBotForm" *ngIf="botType === 'shared'">
+  <mat-form-field appearance="fill" style="width: 100%">
+    <mat-label>Choose Shared Bot</mat-label>
+    <mat-select matNativeControl required formControlName="sharedBotId">
+      <mat-option *ngFor="let sharedBot of data" [value]="sharedBot.id">{{
+        sharedBot.loginName + ' ' + sharedBot.loginLastName
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
+</form>
+<form class="form" [formGroup]="addBotForm" *ngIf="botType === 'my'">
   <mat-form-field>
     <mat-label>SL Username</mat-label>
     <input matInput name="botName" formControlName="slUserName" required />

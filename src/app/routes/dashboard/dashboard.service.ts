@@ -7,9 +7,11 @@ import {
   IAddBotResponse,
   IBotTypes,
   ILinkAccData,
+  ILinkSharedBotToUser,
   IRemoveBot,
   IStartBot,
   IStopBot,
+  SharedBot,
 } from '@shared/Models/bot.model';
 
 @Injectable({
@@ -18,11 +20,20 @@ import {
 export class DashboardService {
   constructor(private http: HttpClient) {}
 
+  getSharedBots() {
+    return this.http.get<SharedBot[]>(environment.apiUrl + '/bot/getsharedbots');
+  }
+
   getBots() {
     return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
   }
   addBot(data: IAddBot) {
     return this.http.post<IAddBotResponse>(environment.apiUrl + '/bot/createbot', data);
+  }
+  linkSharedBotToUser(sharedBotId: number) {
+    return this.http.post<ILinkSharedBotToUser>(environment.apiUrl + '/bot/linksharedbottouser', {
+      sharedBotId,
+    });
   }
   getBotConfiguration(botId: number) {
     const params = new HttpParams().append('botId', botId);
