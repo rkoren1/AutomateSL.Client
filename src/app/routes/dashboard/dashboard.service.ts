@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import {
-  Bots,
+  GetAllBots,
   IAddBot,
   IAddBotResponse,
   IBotTypes,
@@ -25,7 +25,7 @@ export class DashboardService {
   }
 
   getBots() {
-    return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
+    return this.http.get<GetAllBots>(environment.apiUrl + '/bot/getbots');
   }
   addBot(data: IAddBot) {
     return this.http.post<IAddBotResponse>(environment.apiUrl + '/bot/createbot', data);

@@ -1,7 +1,8 @@
 <breadcrumb></breadcrumb>
 <div class="page">
+  <h3 style="text-align: center">My Bots</h3>
   <div class="bots-layout">
-    <div class="bot-wrapper" *ngFor="let bot of allBots">
+    <div class="bot-wrapper" *ngFor="let bot of allMyBots">
       <mat-card class="bot">
         <div class="icons">
           <!-- <div class="fa-solid fa-xmark delete-icon" (click)="removeBot(bot.id)"></div> -->
@@ -11,15 +12,39 @@
             (click)="manageBot(bot.loginName, bot.loginLastName)"
           ></div>
         </div>
-        <img
-          class="avatar-image"
-          [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
-        />
+        <div class="img-wrapper">
+          <img
+            class="avatar-image"
+            [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
+          />
+        </div>
         <div class="bot-name">{{ bot.loginName }}</div>
         <div
           [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
           (click)="startStopBot(bot.id, bot.running)"
         ></div>
+      </mat-card>
+    </div>
+  </div>
+  <h3 style="text-align: center">Shared Bots</h3>
+  <div class="bots-layout">
+    <div class="bot-wrapper" *ngFor="let bot of allSharedBots">
+      <mat-card class="bot">
+        <div class="icons">
+          <!-- <div class="fa-solid fa-xmark delete-icon" (click)="removeBot(bot.id)"></div> -->
+          <div class="fa-solid fa-arrows-rotate refresh-icon" (click)="refreshBot(bot.id)"></div>
+          <div
+            class="fa-solid fa-gear gear-icon"
+            (click)="manageBot(bot.loginName, bot.loginLastName)"
+          ></div>
+        </div>
+        <div class="img-wrapper">
+          <img
+            class="avatar-image"
+            [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
+          />
+        </div>
+        <div class="bot-name">{{ bot.loginName }}</div>
       </mat-card>
     </div>
   </div>

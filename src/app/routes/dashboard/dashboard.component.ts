@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Bots, IAddBot } from '@shared/Models/bot.model';
+import { Bot, IAddBot } from '@shared/Models/bot.model';
 import { AddBotPopupComponent } from './add-bot-popup/add-bot-popup.component';
 import { DashboardService } from './dashboard.service';
 
@@ -19,7 +19,8 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) {}
 
-  allBots: [Bots];
+  allMyBots: Bot[];
+  allSharedBots: Bot[];
 
   ngOnInit() {
     this.getAllBots();
@@ -27,7 +28,8 @@ export class DashboardComponent implements OnInit {
 
   getAllBots() {
     this.dashboardService.getBots().subscribe(res => {
-      this.allBots = res;
+      this.allMyBots = res.my;
+      this.allSharedBots = res.shared;
       this.cd.detectChanges();
     });
   }

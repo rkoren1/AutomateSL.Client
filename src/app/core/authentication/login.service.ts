@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Menu } from '@core/bootstrap/menu.service';
 import { environment } from '@env/environment';
-import { Bots } from '@shared/Models/bot.model';
+import { GetAllBots } from '@shared/Models/bot.model';
 import { of } from 'rxjs';
 import { Token } from './interface';
 
@@ -13,7 +13,7 @@ export class LoginService {
   constructor(protected http: HttpClient) {}
 
   getBots() {
-    return this.http.get<[Bots]>(environment.apiUrl + '/bot/getbots');
+    return this.http.get<GetAllBots>(environment.apiUrl + '/bot/getbots');
   }
 
   menu(isValidToken: boolean) {
@@ -41,8 +41,15 @@ export class LoginService {
     ];
     if (isValidToken) {
       this.getBots().subscribe(bots => {
-        bots.forEach(bot => {
+        bots.my.forEach(bot => {
           menu[1].children?.push({
+            route: bot.loginName + '-' + bot.loginLastName,
+            name: bot.loginName,
+            type: 'link',
+          });
+        });
+        bots.shared.forEach(bot => {
+          menu[2].children?.push({
             route: bot.loginName + '-' + bot.loginLastName,
             name: bot.loginName,
             type: 'link',

@@ -1,10 +1,15 @@
-export interface Bots {
+export interface Bot {
   id: number;
   loginName: string;
   loginLastName: string;
   running: boolean;
   uuid: string;
   imageId: string;
+}
+
+export interface GetAllBots {
+  my: Bot[];
+  shared: Bot[];
 }
 export interface SharedBot {
   id: number;
