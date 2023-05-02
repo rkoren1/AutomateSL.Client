@@ -19,8 +19,8 @@ import { HeaderComponent } from './header/header.component';
 import { BrandingComponent } from './widgets/branding.component';
 import { NotificationComponent } from './widgets/notification.component';
 import { TranslateComponent } from './widgets/translate.component';
-import { UserComponent } from './widgets/user.component';
 import { UserPanelComponent } from './sidebar/user-panel/user-panel.component';
+import { UserComponent } from './widgets/user/user.component';
 
 @NgModule({
   declarations: [
