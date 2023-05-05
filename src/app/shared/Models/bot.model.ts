@@ -1,4 +1,17 @@
-export interface Bots {
+export interface Bot {
+  id: number;
+  loginName: string;
+  loginLastName: string;
+  running: boolean;
+  uuid: string;
+  imageId: string;
+}
+
+export interface GetAllBots {
+  my: Bot[];
+  shared: Bot[];
+}
+export interface SharedBot {
   id: number;
   loginName: string;
   loginLastName: string;
@@ -31,12 +44,15 @@ export interface IBotTypes {
 }
 
 export interface IAddBot {
-  packageId: number;
   slUserName: string;
   loginPassword: string;
   loginSpawnLocation: string;
   loginRegion: string;
 }
 export interface IAddBotResponse {
+  success: boolean;
+}
+
+export interface ILinkSharedBotToUser {
   success: boolean;
 }

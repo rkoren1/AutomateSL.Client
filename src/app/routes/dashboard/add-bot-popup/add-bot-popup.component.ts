@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IBotTypes } from '@shared/Models/bot.model';
-import { AddBotForm } from '@shared/Models/forms.model';
+import { IBotTypes, SharedBot } from '@shared/Models/bot.model';
+import { AddBotForm, AddSharedBotForm } from '@shared/Models/forms.model';
 
 @Component({
   selector: 'app-add-bot-popup',
@@ -11,16 +11,15 @@ import { AddBotForm } from '@shared/Models/forms.model';
 })
 export class AddBotPopupComponent implements OnInit {
   addBotForm: FormGroup<AddBotForm>;
+  addSharedBotForm: FormGroup<AddSharedBotForm>;
   selectedSpawnLocation: string;
+  botType = 'my';
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: IBotTypes[],
+    @Inject(MAT_DIALOG_DATA) public data: SharedBot[],
     private dialogRef: MatDialogRef<AddBotPopupComponent>
   ) {}
   ngOnInit() {
     this.addBotForm = new FormGroup<AddBotForm>({
-      botType: new FormControl(null, {
-        nonNullable: true,
-      }),
       slUserName: new FormControl(null, {
         nonNullable: true,
       }),
@@ -34,13 +33,29 @@ export class AddBotPopupComponent implements OnInit {
         nonNullable: true,
       }),
     });
+    this.addSharedBotForm = new FormGroup<AddSharedBotForm>({
+      sharedBotId: new FormControl(null, {
+        nonNullable: true,
+      }),
+    });
+  }
+  botTypeChanged(e: any) {
+    this.botType = e.value;
   }
 
   validateForm() {
-    this.addBotForm.markAllAsTouched();
+    if (this.botType === 'my') {
+      this.addBotForm.markAllAsTouched();
 
-    if (this.addBotForm.valid) {
-      this.dialogRef.close(this.addBotForm.value);
+      if (this.addBotForm.valid) {
+        this.dialogRef.close({ formValue: this.addBotForm.value, botType: 'my' });
+      }
+    } else {
+      this.addSharedBotForm.markAllAsTouched();
+
+      if (this.addSharedBotForm.valid) {
+        this.dialogRef.close({ formValue: this.addSharedBotForm.value, botType: 'shared' });
+      }
     }
   }
 }
