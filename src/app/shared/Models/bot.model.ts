@@ -5,6 +5,7 @@ export interface Bot {
   running: boolean;
   uuid: string;
   imageId: string;
+  validSubscription: boolean;
 }
 
 export interface GetAllBots {

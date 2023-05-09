@@ -69,8 +69,13 @@
 .start-icon {
   cursor: pointer;
   text-align: center;
+  background-color: inherit;
+  border: none;
+  color: white;
 }
-
+.start-icon:disabled {
+  opacity: 0.3;
+}
 .avatar-image {
   margin-top: 10px;
   height: 60%;

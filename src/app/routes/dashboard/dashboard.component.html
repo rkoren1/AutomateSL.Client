@@ -19,10 +19,11 @@
           />
         </div>
         <div class="bot-name">{{ bot.loginName }}</div>
-        <div
+        <button
           [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
+          [disabled]="!bot.validSubscription"
           (click)="startStopBot(bot.id, bot.running)"
-        ></div>
+        ></button>
       </mat-card>
     </div>
   </div>
