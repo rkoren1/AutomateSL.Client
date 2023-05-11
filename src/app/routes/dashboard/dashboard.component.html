@@ -24,6 +24,7 @@
           [disabled]="!bot.validSubscription"
           (click)="startStopBot(bot.id, bot.running)"
         ></button>
+        <div *ngIf="!bot.validSubscription">No Valid Subscription</div>
       </mat-card>
     </div>
   </div>

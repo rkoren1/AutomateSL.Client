@@ -1,0 +1,19 @@
+<form class="form" [formGroup]="accountForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Choose package</mat-label>
+    <mat-select
+      matNativeControl
+      required
+      [(value)]="selectedSubscription"
+      formControlName="loginSpawnLocation"
+    >
+      <mat-option *ngFor="let package of packages" [value]="package.id">{{
+        package.packageName
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="validateForm()">Confirm</button>
+</mat-dialog-actions>

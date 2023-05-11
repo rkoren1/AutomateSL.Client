@@ -11,14 +11,14 @@
     <mat-card class="mat-card" (click)="startupPopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-rocket startup-icon"></div></div>
       <div class="content-wrapper">
-        <mat-card-title>Startup</mat-card-title
+        <mat-card-title>Start Location</mat-card-title
         ><mat-card-content
           >what your bot does on startup, such as spawn location, etc.</mat-card-content
         >
       </div>
     </mat-card>
   </div>
-  <div class="mat-card-wrapper">
+  <!--   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botAccessCodePopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-lock startup-icon"></div></div>
       <div class="content-wrapper">
@@ -28,13 +28,15 @@
         >
       </div>
     </mat-card>
-  </div>
+  </div> -->
   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botAccountSettingsPopup(botData.id)">
-      <div class="startup-icon-wrapper"><div class="fa-solid fa-id-card startup-icon"></div></div>
+      <div class="startup-icon-wrapper">
+        <div class="fa-solid fa-handshake startup-icon"></div>
+      </div>
       <div class="content-wrapper">
-        <mat-card-title>Bot Account Settings</mat-card-title
-        ><mat-card-content>Update your bot login information.</mat-card-content>
+        <mat-card-title>Add / Extend Plan</mat-card-title
+        ><mat-card-content>Set up your bot functions.</mat-card-content>
       </div>
     </mat-card>
   </div>
