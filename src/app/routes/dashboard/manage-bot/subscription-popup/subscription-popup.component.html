@@ -1,19 +1,42 @@
-<form class="form" [formGroup]="accountForm">
+<h3 style="text-align: center">Sign Up For The Subscription</h3>
+<form class="form" [formGroup]="subscriptionForm">
   <mat-form-field appearance="fill">
     <mat-label>Choose package</mat-label>
-    <mat-select
-      matNativeControl
-      required
-      [(value)]="selectedSubscription"
-      formControlName="loginSpawnLocation"
-    >
+    <mat-select matNativeControl required formControlName="packageName">
       <mat-option *ngFor="let package of packages" [value]="package.id">{{
         package.packageName
       }}</mat-option>
     </mat-select>
   </mat-form-field>
+  <div style="display: flex; flex-direction: row">
+    <mat-form-field style="margin-right: 10px; width: 5rem">
+      <input
+        matInput
+        placeholder="Enter Duration"
+        value="1"
+        type="number"
+        formControlName="quantityOfDateUnits"
+      />
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+      <mat-label>Choose Duration</mat-label>
+      <mat-select matNativeControl required formControlName="dateUnit">
+        <mat-option value="Week">Week</mat-option>
+        <mat-option value="Month">Month</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </form>
+<div style="text-align: end" *ngIf="subscriptionForm.valid">Total: {{ getPackagePrice() }} l$</div>
+<span class="disclaimer"
+  ><i
+    >By clicking "Confirm" the above balance will be deducted from the account and subscription will
+    start immediately.</i
+  ></span
+>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button (click)="validateForm()">Confirm</button>
+  <button mat-button [disabled]="!subscriptionForm.valid" (click)="confirmClicked()">
+    Confirm
+  </button>
 </mat-dialog-actions>

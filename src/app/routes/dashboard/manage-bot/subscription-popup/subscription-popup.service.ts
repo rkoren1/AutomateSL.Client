@@ -25,4 +25,17 @@ export class SubscriptionPopupService {
   getPackages() {
     return this.http.get<Package[]>(environment.apiUrl + '/bot/getpackages');
   }
+  payForPackage(data: {
+    packageId: number;
+    dateUnit: string;
+    amountOfDateUnits: number;
+    botId: number;
+  }) {
+    return this.http.post(environment.apiUrl + '/payment/payforpackage', {
+      packageId: data.packageId,
+      dateUnit: data.dateUnit,
+      amountOfDateUnits: data.amountOfDateUnits,
+      botId: data.botId,
+    });
+  }
 }

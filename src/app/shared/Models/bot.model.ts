@@ -24,8 +24,20 @@ export interface SharedBot {
 export interface ILinkAccData {
   id: number;
   loginFirstName: string;
+  imageId: string;
+  loginLastName?: string;
   loginSpawnLocation: string;
-  loginRegion: string;
+  loginRegion?: any;
+  subscriptions: Subscription[];
+}
+interface Subscription {
+  subscriptionStart: string;
+  subscriptionEnd: string;
+  package: Package;
+}
+
+interface Package {
+  packageName: string;
 }
 
 export interface IRemoveBot {

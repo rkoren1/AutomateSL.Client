@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ILinkAccData } from '@shared/Models/bot.model';
 import { AccessCodePopupComponent } from './access-code-popup/access-code-popup.component';
@@ -19,6 +19,8 @@ export class ManageBotComponent implements OnInit {
     loginFirstName: '',
     loginSpawnLocation: '',
     loginRegion: '',
+    imageId: '00000000-0000-0000-0000-000000000000',
+    subscriptions: [{ subscriptionStart: '', subscriptionEnd: '', package: { packageName: '' } }],
   };
   constructor(
     private route: ActivatedRoute,
@@ -39,8 +41,10 @@ export class ManageBotComponent implements OnInit {
   botAccessCodePopup(botId: number) {
     const dialogRef = this.dialog.open(AccessCodePopupComponent);
   }
-  botAccountSettingsPopup(botId: number) {
-    const dialogRef = this.dialog.open(SubscriptionPopupComponent);
+  botSubscriptionPopup(botId: number) {
+    const dialogRef = this.dialog.open(SubscriptionPopupComponent, {
+      data: { package: this.botData.subscriptions[0].package.packageName, botId },
+    });
   }
   botSettingsPopup(botId: number) {
     const dialogRef = this.dialog.open(BotSettingsPopupComponent);
