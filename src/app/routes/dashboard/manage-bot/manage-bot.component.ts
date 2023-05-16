@@ -21,7 +21,9 @@ export class ManageBotComponent implements OnInit {
     loginSpawnLocation: '',
     loginRegion: '',
     imageId: '00000000-0000-0000-0000-000000000000',
-    subscriptions: [{ subscriptionStart: '', subscriptionEnd: '', package: { packageName: '' } }],
+    subscriptions: [
+      { subscriptionStart: '', subscriptionEnd: '', package: { packageName: '', id: -1 } },
+    ],
   };
   firstName: string;
   lastName: string;
@@ -42,7 +44,7 @@ export class ManageBotComponent implements OnInit {
       this.botData = res;
       if (res.subscriptions.length === 0) {
         this.botData.subscriptions = [
-          { subscriptionStart: '', subscriptionEnd: '', package: { packageName: '' } },
+          { subscriptionStart: '', subscriptionEnd: '', package: { packageName: '', id: -1 } },
         ];
       }
     });
@@ -57,7 +59,11 @@ export class ManageBotComponent implements OnInit {
   botSubscriptionPopup(botId: number) {
     const dialogRef = this.dialog
       .open(SubscriptionPopupComponent, {
-        data: { package: this.botData.subscriptions[0].package.packageName, botId },
+        data: {
+          packageId: this.botData.subscriptions[0].package.id,
+          package: this.botData.subscriptions[0].package.packageName,
+          botId,
+        },
       })
       .afterClosed()
       .subscribe(res => {

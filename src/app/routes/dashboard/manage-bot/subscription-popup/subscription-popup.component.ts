@@ -12,11 +12,12 @@ import { SubscriptionPopupService } from './subscription-popup.service';
 })
 export class SubscriptionPopupComponent implements OnInit {
   subscriptionForm: FormGroup<AddSubscriptionForm>;
-  packages: Package[];
+  packages: Package[] = [];
 
   constructor(
     private subscriptionPopupService: SubscriptionPopupService,
-    @Inject(MAT_DIALOG_DATA) public currentPackage: { package: string; botId: number },
+    @Inject(MAT_DIALOG_DATA)
+    public currentPackage: { packageId: number; package: string; botId: number },
     private dialogRef: MatDialogRef<SubscriptionPopupComponent>
   ) {
     this.initForm();
@@ -40,6 +41,10 @@ export class SubscriptionPopupComponent implements OnInit {
         nonNullable: true,
       }),
     });
+    if (this.currentPackage.packageId > 1) {
+      this.subscriptionForm.controls.packageName.disable();
+      this.subscriptionForm.controls.packageName.setValue(this.currentPackage.packageId);
+    }
   }
   confirmClicked() {
     const formData = this.subscriptionForm.value;
@@ -68,10 +73,10 @@ export class SubscriptionPopupComponent implements OnInit {
     const dateUnit = this.subscriptionForm.get('dateUnit')?.value;
     const numberOfDateUnits = this.subscriptionForm.get('quantityOfDateUnits')?.value;
     const packageInformation: Package[] = this.packages.filter(pack => pack.id == selectedPackage);
-    if (dateUnit === 'Week') {
+    if (packageInformation[0] && dateUnit === 'Week') {
       return (numberOfDateUnits || 0) * packageInformation[0].pricePerWeek;
     }
-    if (dateUnit === 'Month') {
+    if (packageInformation[0] && dateUnit === 'Month') {
       return (numberOfDateUnits || 0) * packageInformation[0].pricePerMonth;
     }
     return '';

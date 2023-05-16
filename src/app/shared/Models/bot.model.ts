@@ -37,6 +37,7 @@ interface Subscription {
 }
 
 interface Package {
+  id: number;
   packageName: string;
 }
 
