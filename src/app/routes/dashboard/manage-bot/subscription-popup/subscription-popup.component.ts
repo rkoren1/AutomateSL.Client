@@ -1,9 +1,9 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AddSubscriptionForm } from '@shared/Models/forms.model';
 import { Package } from '@shared/Models/package.model';
 import { SubscriptionPopupService } from './subscription-popup.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AddSubscriptionForm } from '@shared/Models/forms.model';
 
 @Component({
   selector: 'app-subscription-popup',
@@ -16,7 +16,8 @@ export class SubscriptionPopupComponent implements OnInit {
 
   constructor(
     private subscriptionPopupService: SubscriptionPopupService,
-    @Inject(MAT_DIALOG_DATA) public currentPackage: { package: string; botId: number }
+    @Inject(MAT_DIALOG_DATA) public currentPackage: { package: string; botId: number },
+    private dialogRef: MatDialogRef<SubscriptionPopupComponent>
   ) {
     this.initForm();
   }
@@ -25,7 +26,6 @@ export class SubscriptionPopupComponent implements OnInit {
     this.subscriptionPopupService.getPackages().subscribe(packages => {
       this.packages = packages;
       this.packages = this.packages.filter(ele => ele.packageName !== 'Free Trial');
-      console.log(this.packages);
     });
   }
   private initForm() {
@@ -50,8 +50,9 @@ export class SubscriptionPopupComponent implements OnInit {
         amountOfDateUnits: formData.quantityOfDateUnits!,
         botId: this.currentPackage.botId,
       })
-      .subscribe(res => console.log(res));
-    console.log(this.subscriptionForm.value);
+      .subscribe(res => {
+        this.dialogRef.close();
+      });
   }
   getQuantityOfDateUnits() {
     return this.subscriptionForm.get('quantityOfDateUnits')?.value;

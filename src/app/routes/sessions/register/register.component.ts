@@ -50,7 +50,6 @@ export class RegisterComponent {
         this.registerService
           .createUser(<string>this.registerForm.value.username, hash)
           .subscribe(res => {
-            if (!res.success) console.log(res);
             //after succesful navigation show success popup and then redirect to login
             if (res.success === true) {
               this.toast.success(res.message);

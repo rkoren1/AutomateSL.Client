@@ -23,9 +23,9 @@ export class UserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getLDollarBalance().subscribe(balance => {
-      this.lDollarBalance = balance.lDollarBalance;
-      this.cd.detectChanges();
+    this.callApiUpdateBalance();
+    this.userService.updateLDollarBalance.subscribe(res => {
+      this.callApiUpdateBalance();
     });
     const tmp = localStorage.getItem('token') || '{}';
     this.username = JSON.parse(tmp);
@@ -36,6 +36,13 @@ export class UserComponent implements OnInit {
         debounceTime(10)
       )
       .subscribe(() => this.cdr.detectChanges());
+  }
+
+  private callApiUpdateBalance() {
+    this.userService.getLDollarBalance().subscribe(balance => {
+      this.lDollarBalance = balance.lDollarBalance;
+      this.cd.detectChanges();
+    });
   }
 
   logout() {
