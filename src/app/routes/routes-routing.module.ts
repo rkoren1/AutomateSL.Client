@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { environment } from '@env/environment';
 
+import { AuthGuard } from '@core';
 import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { LoginComponent } from './sessions/login/login.component';
-import { RegisterComponent } from './sessions/register/register.component';
+import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
 import { Error403Component } from './sessions/403.component';
 import { Error404Component } from './sessions/404.component';
 import { Error500Component } from './sessions/500.component';
-import { AuthGuard } from '@core';
-import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
 import { HowToRegisterComponent } from './sessions/how-to-register/how-to-register.component';
+import { LoginComponent } from './sessions/login/login.component';
 
 const routes: Routes = [
   {

@@ -1,8 +1,19 @@
 <breadcrumb></breadcrumb>
 <div class="bot-conf-wrapper">
-  <div class="fa-solid fa-user-gear bot-conf-gear"></div>
+  <img
+    height="70%"
+    [src]="'https://picture-service.secondlife.com/' + botData.imageId + '/256x192.jpg'"
+  />
+  <!-- <div class="fa-solid fa-user-gear bot-conf-gear"></div> -->
   <div>
     Currently customizing <b>{{ botData.loginFirstName }}</b>
+  </div>
+  <div>
+    Package: <b>{{ botData.subscriptions[0].package.packageName }}</b>
+  </div>
+  <div>
+    Subscription is valid until:
+    <b>{{ botData.subscriptions[0].subscriptionEnd | date : 'MMM d, y, H:mm' }}</b>
   </div>
 </div>
 <hr />
@@ -11,14 +22,14 @@
     <mat-card class="mat-card" (click)="startupPopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-rocket startup-icon"></div></div>
       <div class="content-wrapper">
-        <mat-card-title>Startup</mat-card-title
+        <mat-card-title>Start Location</mat-card-title
         ><mat-card-content
           >what your bot does on startup, such as spawn location, etc.</mat-card-content
         >
       </div>
     </mat-card>
   </div>
-  <div class="mat-card-wrapper">
+  <!--   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botAccessCodePopup(botData.id)">
       <div class="startup-icon-wrapper"><div class="fa-solid fa-lock startup-icon"></div></div>
       <div class="content-wrapper">
@@ -28,13 +39,15 @@
         >
       </div>
     </mat-card>
-  </div>
+  </div> -->
   <div class="mat-card-wrapper">
-    <mat-card class="mat-card" (click)="botAccountSettingsPopup(botData.id)">
-      <div class="startup-icon-wrapper"><div class="fa-solid fa-id-card startup-icon"></div></div>
+    <mat-card class="mat-card" (click)="botSubscriptionPopup(botData.id)">
+      <div class="startup-icon-wrapper">
+        <div class="fa-solid fa-handshake startup-icon"></div>
+      </div>
       <div class="content-wrapper">
-        <mat-card-title>Bot Account Settings</mat-card-title
-        ><mat-card-content>Update your bot login information.</mat-card-content>
+        <mat-card-title>Manage Plan</mat-card-title
+        ><mat-card-content>Add, change or extend the plan.</mat-card-content>
       </div>
     </mat-card>
   </div>

@@ -5,6 +5,7 @@ export interface Bot {
   running: boolean;
   uuid: string;
   imageId: string;
+  validSubscription: boolean;
 }
 
 export interface GetAllBots {
@@ -23,8 +24,21 @@ export interface SharedBot {
 export interface ILinkAccData {
   id: number;
   loginFirstName: string;
+  imageId: string;
+  loginLastName?: string;
   loginSpawnLocation: string;
-  loginRegion: string;
+  loginRegion?: any;
+  subscriptions: Subscription[];
+}
+interface Subscription {
+  subscriptionStart: string;
+  subscriptionEnd: string;
+  package: Package;
+}
+
+interface Package {
+  id: number;
+  packageName: string;
 }
 
 export interface IRemoveBot {

@@ -16,3 +16,9 @@ export interface AddBotForm {
 export interface AddSharedBotForm {
   sharedBotId: FormControl<number | null>;
 }
+
+export interface AddSubscriptionForm {
+  packageName: FormControl<number | null>;
+  dateUnit: FormControl<string>;
+  quantityOfDateUnits: FormControl<number>;
+}
