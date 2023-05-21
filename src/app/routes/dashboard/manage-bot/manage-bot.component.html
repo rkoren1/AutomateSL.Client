@@ -20,46 +20,48 @@
 <div class="tiles-wrapper">
   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="startupPopup(botData.id)">
-      <div class="startup-icon-wrapper"><div class="fa-solid fa-rocket startup-icon"></div></div>
-      <div class="content-wrapper">
-        <mat-card-title>Start Location</mat-card-title
-        ><mat-card-content
-          >what your bot does on startup, such as spawn location, etc.</mat-card-content
-        >
-      </div>
+      <mat-card-content class="card-content">
+        <div class="startup-icon-wrapper"><div class="fa-solid fa-rocket startup-icon"></div></div>
+        <div class="content-wrapper">
+          <mat-card-title>Start Location</mat-card-title>
+          <span>what your bot does on startup, such as spawn location, etc.</span>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
-  <!--   <div class="mat-card-wrapper">
+  <!-- <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botAccessCodePopup(botData.id)">
-      <div class="startup-icon-wrapper"><div class="fa-solid fa-lock startup-icon"></div></div>
-      <div class="content-wrapper">
-        <mat-card-title>Bot Access Code</mat-card-title
-        ><mat-card-content
-          >Bot access code is used to control/script your bot using our APIs.</mat-card-content
-        >
-      </div>
+      <mat-card-content class="card-content">
+        <div class="startup-icon-wrapper"><div class="fa-solid fa-lock startup-icon"></div></div>
+        <div class="content-wrapper">
+          <mat-card-title>Bot Access Code</mat-card-title
+          ><span>Bot access code is used to control/script your bot using our APIs.</span>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div> -->
   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botSubscriptionPopup(botData.id)">
-      <div class="startup-icon-wrapper">
-        <div class="fa-solid fa-handshake startup-icon"></div>
-      </div>
-      <div class="content-wrapper">
-        <mat-card-title>Manage Plan</mat-card-title
-        ><mat-card-content>Add, change or extend the plan.</mat-card-content>
-      </div>
+      <mat-card-content class="card-content">
+        <div class="startup-icon-wrapper">
+          <div class="fa-solid fa-handshake startup-icon"></div>
+        </div>
+        <div class="content-wrapper">
+          <mat-card-title>Manage Plan</mat-card-title>
+          <span>Add, change or extend the plan.</span>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
   <div class="mat-card-wrapper">
     <mat-card class="mat-card" (click)="botSettingsPopup(botData.id)">
-      <div class="startup-icon-wrapper"><div class="fa-solid fa-robot startup-icon"></div></div>
-      <div class="content-wrapper">
-        <mat-card-title>Bot Settings</mat-card-title
-        ><mat-card-content
-          >Change settings like auto accept group invites or inventory item.</mat-card-content
-        >
-      </div>
+      <mat-card-content class="card-content">
+        <div class="startup-icon-wrapper"><div class="fa-solid fa-robot startup-icon"></div></div>
+        <div class="content-wrapper">
+          <mat-card-title>Bot Settings</mat-card-title>
+          <span>Change settings like auto accept group invites or inventory item.</span>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
 </div>

@@ -38,9 +38,9 @@ export class LoginComponent {
     this.auth
       .login(this.username.value, this.password.value, this.rememberMe.value)
       .pipe(filter(authenticated => authenticated))
-      .subscribe(
-        () => this.router.navigateByUrl('/'),
-        (errorRes: HttpErrorResponse) => {
+      .subscribe({
+        next: () => this.router.navigateByUrl('/'),
+        error: (errorRes: HttpErrorResponse) => {
           if (errorRes.status === 422) {
             const form = this.loginForm;
             const errors = errorRes.error.errors;
@@ -51,7 +51,7 @@ export class LoginComponent {
             });
           }
           this.isSubmitting = false;
-        }
-      );
+        },
+      });
   }
 }
