@@ -1,26 +1,28 @@
-<form class="form" [formGroup]="startupForm">
-  <mat-form-field appearance="fill">
-    <mat-label>Login Location</mat-label>
-    <mat-select
-      matNativeControl
-      required
-      [(value)]="selectedSpawnLocation"
-      formControlName="loginSpawnLocation"
-    >
-      <mat-option value="home">Home</mat-option>
-      <mat-option value="last">Last</mat-option>
-      <mat-option value="region">Region</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill" *ngIf="selectedSpawnLocation === 'region'">
-    <mat-label>Region Name</mat-label>
-    <input required matInput name="regionName" formControlName="loginRegion"
-  /></mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label> Object to sit on startup</mat-label>
-    <input required matInput name="startupObject" formControlName="startupObject" />
-  </mat-form-field>
-</form>
+<mat-dialog-content>
+  <form class="form" [formGroup]="startupForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Login Location</mat-label>
+      <mat-select
+        matNativeControl
+        required
+        [(value)]="selectedSpawnLocation"
+        formControlName="loginSpawnLocation"
+      >
+        <mat-option value="home">Home</mat-option>
+        <mat-option value="last">Last</mat-option>
+        <mat-option value="region">Region</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="selectedSpawnLocation === 'region'">
+      <mat-label>Region Name</mat-label>
+      <input required matInput name="regionName" formControlName="loginRegion"
+    /></mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label> Object to sit on startup</mat-label>
+      <input required matInput name="startupObject" formControlName="startupObject" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button (click)="validateForm()">Save</button>

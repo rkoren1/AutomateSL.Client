@@ -14,23 +14,29 @@
       </g>
     </svg>
   </a>
-  <button class="matero-toolbar-button matero-avatar-button" mat-button [matMenuTriggerFor]="menu">
-    <img class="matero-avatar" src="assets/images/account-avatar.png" width="32" alt="avatar" />
-    <span class="matero-username" fxHide.lt-sm>{{ username.email }}</span>
+  <button class="r-full" mat-button [matMenuTriggerFor]="menu">
+    <img
+      matButtonIcon
+      class="avatar r-full"
+      src="assets/images/account-avatar.png"
+      width="24"
+      alt="avatar"
+    />
+    <span class="m-x-8">{{ username.email }}</span>
   </button>
-</div>
 
-<mat-menu #menu="matMenu">
-  <button routerLink="/profile/overview" mat-menu-item>
-    <mat-icon>account_circle</mat-icon>
-    <span>{{ 'user.profile' | translate }}</span>
-  </button>
-  <button routerLink="/profile/settings" mat-menu-item>
-    <mat-icon>settings</mat-icon>
-    <span>{{ 'user.settings' | translate }}</span>
-  </button>
-  <button mat-menu-item (click)="logout()">
-    <mat-icon>exit_to_app</mat-icon>
-    <span>{{ 'user.logout' | translate }}</span>
-  </button>
-</mat-menu>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/profile/overview" mat-menu-item>
+      <mat-icon>account_circle</mat-icon>
+      <span>{{ 'user.profile' | translate }}</span>
+    </button>
+    <button routerLink="/profile/settings" mat-menu-item>
+      <mat-icon>settings</mat-icon>
+      <span>{{ 'user.settings' | translate }}</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      <span>{{ 'user.logout' | translate }}</span>
+    </button>
+  </mat-menu>
+</div>
