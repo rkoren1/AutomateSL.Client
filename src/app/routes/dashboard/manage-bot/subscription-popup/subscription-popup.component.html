@@ -1,5 +1,5 @@
+<h3 mat-dialog-title style="text-align: center">Sign Up For The Subscription</h3>
 <mat-dialog-content>
-  <h3 style="text-align: center">Sign Up For The Subscription</h3>
   <form class="form" [formGroup]="subscriptionForm">
     <mat-form-field appearance="fill">
       <mat-label>Choose package</mat-label>
@@ -29,7 +29,7 @@
       </mat-form-field>
     </div>
   </form>
-  <div style="text-align: end" *ngIf="subscriptionForm.valid">
+  <div style="text-align: end; margin-bottom: 5px" *ngIf="subscriptionForm.valid">
     Total: {{ getPackagePrice() }} l$
   </div>
   <span class="disclaimer"
