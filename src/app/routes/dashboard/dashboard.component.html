@@ -4,27 +4,29 @@
   <div class="bots-layout">
     <div class="bot-wrapper" *ngFor="let bot of allMyBots">
       <mat-card class="bot">
-        <div class="icons">
+        <mat-card-header class="icons">
           <!-- <div class="fa-solid fa-xmark delete-icon" (click)="removeBot(bot.id)"></div> -->
           <div class="fa-solid fa-arrows-rotate refresh-icon" (click)="refreshBot(bot.id)"></div>
           <div
             class="fa-solid fa-gear gear-icon"
             (click)="manageBot(bot.loginName, bot.loginLastName)"
           ></div>
-        </div>
-        <div class="img-wrapper">
-          <img
-            class="avatar-image"
-            [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
-          />
-        </div>
-        <div class="bot-name">{{ bot.loginName }}</div>
-        <button
-          [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
-          [disabled]="!bot.validSubscription"
-          (click)="startStopBot(bot.id, bot.running)"
-        ></button>
-        <div *ngIf="!bot.validSubscription">No Valid Subscription</div>
+        </mat-card-header>
+        <mat-card-content class="bot-content">
+          <div class="img-wrapper">
+            <img
+              class="avatar-image"
+              [src]="'https://picture-service.secondlife.com/' + bot.imageId + '/256x192.jpg'"
+            />
+          </div>
+          <div class="bot-name">{{ bot.loginName }}</div>
+          <button
+            [class]="bot.running ? 'fa-solid fa-pause start-icon' : 'fa-solid fa-play start-icon'"
+            [disabled]="!bot.validSubscription"
+            (click)="startStopBot(bot.id, bot.running)"
+          ></button>
+          <div *ngIf="!bot.validSubscription">No Valid Subscription</div>
+        </mat-card-content>
       </mat-card>
     </div>
   </div>
