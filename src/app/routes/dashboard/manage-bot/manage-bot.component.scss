@@ -12,6 +12,7 @@
 }
 .tiles-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .startup-icon {
@@ -31,6 +32,7 @@
   width: 25%;
   box-sizing: border-box;
   padding: 15px;
+  min-width: 325px;
 }
 .startup-icon-wrapper {
   display: flex;
