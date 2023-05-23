@@ -5,6 +5,7 @@ import { ILinkAccData } from '@shared/Models/bot.model';
 import { UserService } from '@theme/widgets/user/user.service';
 import { AccessCodePopupComponent } from './access-code-popup/access-code-popup.component';
 import { BotSettingsPopupComponent } from './bot-settings-popup/bot-settings-popup.component';
+import { DiscordSettingsPopupComponent } from './discord-settings-popup/discord-settings-popup.component';
 import { ManageBotService } from './manage-bot.service';
 import { StartupPopupComponent } from './startup-popup/startup-popup.component';
 import { SubscriptionPopupComponent } from './subscription-popup/subscription-popup.component';
@@ -55,6 +56,9 @@ export class ManageBotComponent implements OnInit {
   }
   botAccessCodePopup(botId: number) {
     const dialogRef = this.dialog.open(AccessCodePopupComponent);
+  }
+  discordSettingsPopup(botId: number) {
+    const dialogRef = this.dialog.open(DiscordSettingsPopupComponent);
   }
   botSubscriptionPopup(botId: number) {
     const dialogRef = this.dialog

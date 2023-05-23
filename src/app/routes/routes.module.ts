@@ -8,6 +8,7 @@ import { AddBotPopupComponent } from './dashboard/add-bot-popup/add-bot-popup.co
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AccessCodePopupComponent } from './dashboard/manage-bot/access-code-popup/access-code-popup.component';
 import { BotSettingsPopupComponent } from './dashboard/manage-bot/bot-settings-popup/bot-settings-popup.component';
+import { DiscordSettingsPopupComponent } from './dashboard/manage-bot/discord-settings-popup/discord-settings-popup.component';
 import { ManageBotComponent } from './dashboard/manage-bot/manage-bot.component';
 import { StartupPopupComponent } from './dashboard/manage-bot/startup-popup/startup-popup.component';
 import { SubscriptionPopupComponent } from './dashboard/manage-bot/subscription-popup/subscription-popup.component';
@@ -32,6 +33,7 @@ const COMPONENTS: any[] = [
   StartupPopupComponent,
   AccessCodePopupComponent,
   SubscriptionPopupComponent,
+  DiscordSettingsPopupComponent,
 ];
 const COMPONENTS_DYNAMIC: any[] = [];
 
