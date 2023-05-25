@@ -22,3 +22,9 @@ export interface AddSubscriptionForm {
   dateUnit: FormControl<string>;
   quantityOfDateUnits: FormControl<number>;
 }
+
+export interface DiscSettingsForm {
+  discChannelId: FormControl<string>;
+  slGroupUuid: FormControl<string>;
+  webhookUrl: FormControl<string>;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ILinkAccData } from '@shared/Models/bot.model';
+import { DiscordSettingsInput } from '@shared/Models/discordSettings.model';
 import { UserService } from '@theme/widgets/user/user.service';
 import { AccessCodePopupComponent } from './access-code-popup/access-code-popup.component';
 import { BotSettingsPopupComponent } from './bot-settings-popup/bot-settings-popup.component';
@@ -58,7 +59,14 @@ export class ManageBotComponent implements OnInit {
     const dialogRef = this.dialog.open(AccessCodePopupComponent);
   }
   discordSettingsPopup(botId: number) {
-    const dialogRef = this.dialog.open(DiscordSettingsPopupComponent);
+    const data: DiscordSettingsInput = {} as DiscordSettingsInput;
+    this.manageBotService.getDiscordSettings(botId).subscribe(res => {
+      data.botId = botId;
+      data.discChannelId = res[0].discChannelId;
+      data.slGroupUuid = res[0].slGroupUuid;
+      data.webHookUrl = res[0].webHookUrl;
+      const dialogRef = this.dialog.open(DiscordSettingsPopupComponent, { data });
+    });
   }
   botSubscriptionPopup(botId: number) {
     const dialogRef = this.dialog

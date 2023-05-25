@@ -1,6 +1,37 @@
 <mat-dialog-content>
-  <div>It Workz!</div>
+  <form [formGroup]="discordSettingsForm">
+    <div class="form-wrapper">
+      <mat-label>Webhook URL</mat-label>
+      <mat-form-field appearance="fill" class="form-element">
+        <input
+          matInput
+          placeholder="Enter Webhook URL"
+          type="string"
+          formControlName="webhookUrl"
+        />
+      </mat-form-field>
+      <mat-label>SL Group UUID</mat-label>
+      <mat-form-field appearance="fill" class="form-element">
+        <input
+          matInput
+          placeholder="Enter SL Group UUID"
+          type="string"
+          formControlName="slGroupUuid"
+        />
+      </mat-form-field>
+      <mat-label>Discord Channel ID</mat-label>
+      <mat-form-field appearance="fill" class="form-element">
+        <input
+          matInput
+          placeholder="Enter Discord Channel ID"
+          type="string"
+          formControlName="discChannelId"
+        />
+      </mat-form-field>
+    </div>
+  </form>
 </mat-dialog-content>
+
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button mat-button (click)="confirmClicked()">Confirm</button>
