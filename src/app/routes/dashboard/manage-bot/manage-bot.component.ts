@@ -62,9 +62,12 @@ export class ManageBotComponent implements OnInit {
     const data: DiscordSettingsInput = {} as DiscordSettingsInput;
     this.manageBotService.getDiscordSettings(botId).subscribe(res => {
       data.botId = botId;
-      data.discChannelId = res[0].discChannelId;
-      data.slGroupUuid = res[0].slGroupUuid;
-      data.webHookUrl = res[0].webHookUrl;
+      if (res.length > 0) {
+        data.id = res[0].id;
+        data.discChannelId = res[0].discChannelId;
+        data.slGroupUuid = res[0].slGroupUuid;
+        data.webHookUrl = res[0].webHookUrl;
+      }
       const dialogRef = this.dialog.open(DiscordSettingsPopupComponent, { data });
     });
   }

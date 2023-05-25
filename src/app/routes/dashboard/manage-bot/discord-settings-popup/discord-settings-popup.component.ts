@@ -27,10 +27,11 @@ export class DiscordSettingsPopupComponent implements OnInit {
     const formData = this.discordSettingsForm.value;
     this.discSettingsService
       .setDiscordSettings({
+        id: this.inputParams.id,
         botId: this.inputParams.botId,
-        discChannelId: this.inputParams.discChannelId,
-        webHookUrl: this.inputParams.webHookUrl,
-        slGroupUuid: this.inputParams.slGroupUuid,
+        discChannelId: formData.discChannelId,
+        webHookUrl: formData.webhookUrl,
+        slGroupUuid: formData.slGroupUuid,
       })
       .subscribe(res => {
         this.dialogRef.close();

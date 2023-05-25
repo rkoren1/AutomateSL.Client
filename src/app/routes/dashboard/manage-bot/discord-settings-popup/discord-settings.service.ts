@@ -10,6 +10,7 @@ export class DiscordSettingsService {
 
   setDiscordSettings(data: any) {
     return this.http.post(environment.apiUrl + '/bot/setdiscordsettings', {
+      id: data.id,
       botId: data.botId,
       discChannelId: data.discChannelId,
       webHookUrl: data.webHookUrl,
