@@ -4,33 +4,35 @@
       {{ 'register.welcome' | translate }}, <br />
       {{ 'register.title' | translate }}
     </mat-card-title>
-    <mat-horizontal-stepper [linear]="true" #stepper>
-      <mat-step>
-        <ng-template matStepLabel>TP To Terminal</ng-template>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Click To Register</ng-template>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Fill The Email And Get Password</ng-template>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-      </mat-step>
-    </mat-horizontal-stepper>
-    <div class="images">
-      <div class="image" style="margin-left: 24px">
-        <img src="assets/images/terminal.png" height="200px" />
+    <mat-card-content>
+      <mat-horizontal-stepper [linear]="true" #stepper>
+        <mat-step>
+          <ng-template matStepLabel>TP To Terminal</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Click To Register</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Fill The Email And Get Password</ng-template>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+        </mat-step>
+      </mat-horizontal-stepper>
+      <div class="images">
+        <div class="image">
+          <img src="assets/images/terminal.png" height="200px" />
+        </div>
+        <div class="image"><img src="assets/images/terminal_register.png" height="200px" /></div>
+        <div class="image"><img src="assets/images/terminal_email.png" height="200px" /></div>
+        <div class="image" style="margin-right: 0px">
+          <img src="assets/images/terminal_done.png" height="200px" />
+        </div>
       </div>
-      <div class="image"><img src="assets/images/terminal_register.png" height="200px" /></div>
-      <div class="image"><img src="assets/images/terminal_email.png" height="200px" /></div>
-      <div class="image" style="margin-right: 0px">
-        <img src="assets/images/terminal_done.png" height="200px" />
+      <div class="m-t-16" class="center-text">
+        {{ 'register.have_an_account' | translate }}?
+        <a routerLink="/auth/login">{{ 'login.login' | translate }}</a>
       </div>
-    </div>
-    <div class="m-t-16" class="center-text">
-      {{ 'register.have_an_account' | translate }}?
-      <a routerLink="/auth/login">{{ 'login.login' | translate }}</a>
-    </div>
+    </mat-card-content>
   </mat-card>
 </div>
