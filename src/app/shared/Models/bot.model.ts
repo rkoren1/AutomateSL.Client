@@ -70,3 +70,9 @@ export interface IAddBotResponse {
 export interface ILinkSharedBotToUser {
   success: boolean;
 }
+
+export interface IBotConfiguration {
+  loginSpawnLocation: string;
+  loginRegion: string;
+  botId: number;
+}

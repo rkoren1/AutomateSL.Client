@@ -53,12 +53,18 @@ export class ManageBotComponent implements OnInit {
   }
 
   startupPopup(botId: number) {
-    const dialogRef = this.dialog.open(StartupPopupComponent, {
-      data: {
-        loginSpawnLocation: this.botData.loginSpawnLocation,
-        loginRegion: this.botData.loginRegion,
-      },
-    });
+    const dialogRef = this.dialog
+      .open(StartupPopupComponent, {
+        data: {
+          loginSpawnLocation: this.botData.loginSpawnLocation,
+          loginRegion: this.botData.loginRegion,
+          botId: this.botData.id,
+        },
+      })
+      .afterClosed()
+      .subscribe(res => {
+        this.getBotConfiguration(this.firstName, this.lastName);
+      });
   }
   botAccessCodePopup(botId: number) {
     const dialogRef = this.dialog.open(AccessCodePopupComponent);
