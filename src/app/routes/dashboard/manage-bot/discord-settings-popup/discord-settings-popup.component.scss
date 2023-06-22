@@ -5,3 +5,14 @@
 .form-element {
   width: 300px;
 }
+.disclaimer {
+  display: inline-block;
+  width: 18rem;
+  font-size: 12px;
+  text-align: justify;
+}
+.add-disc-bot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
